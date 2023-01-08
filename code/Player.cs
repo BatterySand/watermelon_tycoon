@@ -189,6 +189,7 @@ public class Player : BasePlayer
 				basePlayer.DevController = new NoclipController();
 			}
 		}
+		Log.Info( "Test" );
 	}
 
 	[ConCmd.Admin( "kill" )]
