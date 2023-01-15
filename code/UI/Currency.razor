@@ -1,0 +1,54 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+
+@namespace MelTycoon
+@inherits Panel
+
+
+@code
+{
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(MyGame.LocalPlayer.Currency);
+	}
+}
+
+<root>
+	@{
+		if (!MyGame.LocalPlayer.IsValid())
+			return;
+	}
+	<div class="inner">
+		<label>@MyGame.LocalPlayer.Currency.ToString()</label>
+	</div>
+	<style>
+		Currency {
+			position: absolute;
+			bottom: 1%;
+			left: 0%;
+			width: 100%;
+
+			display: flex;
+
+			justify-content: center;
+
+			.inner {
+				width:auto;
+				padding-right: 7px;
+				background-color: rgba(0,0,0,0.5);
+				backdrop-filter: blur(12px);
+				border-radius: 3px;
+				display: flex;
+				justify-content: center;
+
+				.label {
+					font-family: Poppins;
+					font-weight: bold;
+					color: white;
+					font-size: 64px;
+
+				}
+			}
+		}
+	</style>
+</root>

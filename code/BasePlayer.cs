@@ -1,8 +1,8 @@
-﻿
+﻿using Sandbox;
 using Sandbox.Component;
 using System.ComponentModel;
 
-namespace Sandbox;
+namespace MelTycoon;
 
 /// <summary>
 /// This is what you should derive your player from. This base exists in addon code
@@ -25,7 +25,7 @@ public partial class BasePlayer : AnimatedEntity
 	/// on the client.
 	/// </summary>
 	[Net, Predicted]
-	public PawnController Controller { get; set; }
+	public MelTycoon.PawnController Controller { get; set; }
 
 	/// <summary>
 	/// This is used for noclip mode

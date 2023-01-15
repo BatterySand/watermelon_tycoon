@@ -19,8 +19,12 @@ namespace MelTycoon;
 /// </summary>
 public partial class MyGame : GameManager
 {
+	public static Player LocalPlayer => Game.LocalPawn as Player;
+
 	public MyGame()
 	{
+		if ( Game.IsClient )
+			_ = new Hud();
 	}
 
 	/// <summary>
@@ -33,6 +37,7 @@ public partial class MyGame : GameManager
 		// Create a pawn for this client to play with
 		var pawn = new Player();
 		client.Pawn = pawn;
+		pawn.Respawn();
 
 		// Get all of the spawnpoints
 		var spawnpoints = Entity.All.OfType<SpawnPoint>();
@@ -47,5 +52,20 @@ public partial class MyGame : GameManager
 			tx.Position = tx.Position + Vector3.Up * 50.0f; // raise it up
 			pawn.Transform = tx;
 		}
+	}
+
+	[ConCmd.Admin( "spawn_melon" )]
+	public static void SpawnMelon()
+	{
+		var client = ConsoleSystem.Caller;
+		var pawn = client.Pawn;
+
+		if ( pawn is not Player ply )
+			return;
+
+		var pos = ply.EyePosition + ply.EyeRotation.Forward * 64f;
+
+		var m = new Melon();
+		m.Position = pos;
 	}
 }
