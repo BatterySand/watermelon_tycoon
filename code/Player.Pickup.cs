@@ -44,6 +44,11 @@ partial class Player
 			{
 				if ( trace.Body.Mass < 100f )
 				{
+					if ( entity is Melon melon )
+					{
+						melon.MelonOwner = Client;
+					}
+
 					PickupEntityBody = trace.Body;
 					PickupEntity = model;
 					PickupEntity.Tags.Add( "held" );
