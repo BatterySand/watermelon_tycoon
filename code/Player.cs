@@ -123,7 +123,7 @@ public partial class Player : BasePlayer
 			SimulateAnimation( controller );
 		}
 
-		//TickPlayerUse();
+		TickPickupRagdollOrProp();
 		SimulateActiveChild( cl, ActiveChild );
 
 		if ( Input.Pressed( InputButton.View ) )
