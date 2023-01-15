@@ -1,200 +1,200 @@
-﻿using System.Collections.Generic;
+﻿using Sandbox;
+using System.Collections.Generic;
 
-namespace Sandbox
+namespace MelTycoon;
+
+[System.Obsolete( "This will be deleted soon. It's advised to stop using it if you can." )]
+public class PawnController : BaseNetworkable
 {
-	[System.Obsolete( "This will be deleted soon. It's advised to stop using it if you can." )]
-	public class PawnController : BaseNetworkable
+	internal HashSet<string> Events;
+	internal HashSet<string> Tags;
+
+	public Entity Pawn { get; protected set; }
+	public IClient Client { get; protected set; }
+	public Vector3 Position { get; set; }
+	public Rotation Rotation { get; set; }
+	public Vector3 Velocity { get; set; }
+	public Rotation EyeRotation { get; set; }
+	public Vector3 EyeLocalPosition { get; set; }
+	public Vector3 BaseVelocity { get; set; }
+	public Entity GroundEntity { get; set; }
+	public Vector3 GroundNormal { get; set; }
+
+	public Vector3 WishVelocity { get; set; }
+
+	public void UpdateFromEntity( Entity entity )
 	{
-		internal HashSet<string> Events;
-		internal HashSet<string> Tags;
+		Position = entity.Position;
+		Rotation = entity.Rotation;
+		Velocity = entity.Velocity;
 
-		public Entity Pawn { get; protected set; }
-		public IClient Client { get; protected set; }
-		public Vector3 Position { get; set; }
-		public Rotation Rotation { get; set; }
-		public Vector3 Velocity { get; set; }
-		public Rotation EyeRotation { get; set; }
-		public Vector3 EyeLocalPosition { get; set; }
-		public Vector3 BaseVelocity { get; set; }
-		public Entity GroundEntity { get; set; }
-		public Vector3 GroundNormal { get; set; }
-
-		public Vector3 WishVelocity { get; set; }
-
-		public void UpdateFromEntity( Entity entity )
+		if ( entity is Player player )
 		{
-			Position = entity.Position;
-			Rotation = entity.Rotation;
-			Velocity = entity.Velocity;
-
-			if ( entity is Player player )
-			{
-				EyeRotation = player.EyeRotation;
-				EyeLocalPosition = player.EyeLocalPosition;
-			}
-
-			BaseVelocity = entity.BaseVelocity;
-			GroundEntity = entity.GroundEntity;
-			WishVelocity = entity.Velocity;
+			EyeRotation = player.EyeRotation;
+			EyeLocalPosition = player.EyeLocalPosition;
 		}
 
-		public void UpdateFromController( PawnController controller )
+		BaseVelocity = entity.BaseVelocity;
+		GroundEntity = entity.GroundEntity;
+		WishVelocity = entity.Velocity;
+	}
+
+	public void UpdateFromController( PawnController controller )
+	{
+		Pawn = controller.Pawn;
+		Client = controller.Client;
+
+		Position = controller.Position;
+		Rotation = controller.Rotation;
+		Velocity = controller.Velocity;
+		EyeRotation = controller.EyeRotation;
+		GroundEntity = controller.GroundEntity;
+		BaseVelocity = controller.BaseVelocity;
+		EyeLocalPosition = controller.EyeLocalPosition;
+		WishVelocity = controller.WishVelocity;
+		GroundNormal = controller.GroundNormal;
+
+		Events = controller.Events;
+		Tags = controller.Tags;
+	}
+
+	public void Finalize( Entity target )
+	{
+		target.Position = Position;
+		target.Velocity = Velocity;
+		target.Rotation = Rotation;
+		target.GroundEntity = GroundEntity;
+		target.BaseVelocity = BaseVelocity;
+
+		if ( target is Player player )
 		{
-			Pawn = controller.Pawn;
-			Client = controller.Client;
-
-			Position = controller.Position;
-			Rotation = controller.Rotation;
-			Velocity = controller.Velocity;
-			EyeRotation = controller.EyeRotation;
-			GroundEntity = controller.GroundEntity;
-			BaseVelocity = controller.BaseVelocity;
-			EyeLocalPosition = controller.EyeLocalPosition;
-			WishVelocity = controller.WishVelocity;
-			GroundNormal = controller.GroundNormal;
-
-			Events = controller.Events;
-			Tags = controller.Tags;
+			player.EyeLocalPosition = EyeLocalPosition;
+			player.EyeRotation = EyeRotation;
 		}
+	}
 
-		public void Finalize( Entity target )
+	/// <summary>
+	/// This is what your logic should be going in
+	/// </summary>
+	public virtual void Simulate()
+	{
+		// Nothing
+	}
+
+	/// <summary>
+	/// This is called every frame on the client only
+	/// </summary>
+	public virtual void FrameSimulate()
+	{
+		Game.AssertClient();
+	}
+
+	/// <summary>
+	/// Call OnEvent for each event
+	/// </summary>
+	public virtual void RunEvents( PawnController additionalController )
+	{
+		if ( Events == null ) return;
+
+		foreach ( var e in Events )
 		{
-			target.Position = Position;
-			target.Velocity = Velocity;
-			target.Rotation = Rotation;
-			target.GroundEntity = GroundEntity;
-			target.BaseVelocity = BaseVelocity;
-
-			if ( target is Player player )
-			{
-				player.EyeLocalPosition = EyeLocalPosition;
-				player.EyeRotation = EyeRotation;
-			}
+			OnEvent( e );
+			additionalController?.OnEvent( e );
 		}
+	}
 
-		/// <summary>
-		/// This is what your logic should be going in
-		/// </summary>
-		public virtual void Simulate()
-		{
-			// Nothing
-		}
+	/// <summary>
+	/// An event has been triggered - maybe handle it
+	/// </summary>
+	public virtual void OnEvent( string name )
+	{
 
-		/// <summary>
-		/// This is called every frame on the client only
-		/// </summary>
-		public virtual void FrameSimulate()
-		{
-			Game.AssertClient();
-		}
+	}
 
-		/// <summary>
-		/// Call OnEvent for each event
-		/// </summary>
-		public virtual void RunEvents( PawnController additionalController )
-		{
-			if ( Events == null ) return;
+	/// <summary>
+	/// Returns true if we have this event
+	/// </summary>
+	public bool HasEvent( string eventName )
+	{
+		if ( Events == null ) return false;
+		return Events.Contains( eventName );
+	}
 
-			foreach ( var e in Events )
-			{
-				OnEvent( e );
-				additionalController?.OnEvent( e );
-			}
-		}
-
-		/// <summary>
-		/// An event has been triggered - maybe handle it
-		/// </summary>
-		public virtual void OnEvent( string name )
-		{
-
-		}
-
-		/// <summary>
-		/// Returns true if we have this event
-		/// </summary>
-		public bool HasEvent( string eventName )
-		{
-			if ( Events == null ) return false;
-			return Events.Contains( eventName );
-		}
-
-		/// <summary>
-		/// </summary>
-		public bool HasTag( string tagName )
-		{
-			if ( Tags == null ) return false;
-			return Tags.Contains( tagName );
-		}
+	/// <summary>
+	/// </summary>
+	public bool HasTag( string tagName )
+	{
+		if ( Tags == null ) return false;
+		return Tags.Contains( tagName );
+	}
 
 
-		/// <summary>
-		/// Allows the controller to pass events to other systems
-		/// while staying abstracted.
-		/// For example, it could pass a "jump" event, which could then
-		/// be picked up by the playeranimator to trigger a jump animation,
-		/// and picked up by the player to play a jump sound.
-		/// </summary>
-		public void AddEvent( string eventName )
-		{
-			// TODO - shall we allow passing data with the event?
+	/// <summary>
+	/// Allows the controller to pass events to other systems
+	/// while staying abstracted.
+	/// For example, it could pass a "jump" event, which could then
+	/// be picked up by the playeranimator to trigger a jump animation,
+	/// and picked up by the player to play a jump sound.
+	/// </summary>
+	public void AddEvent( string eventName )
+	{
+		// TODO - shall we allow passing data with the event?
 
-			if ( Events == null ) Events = new HashSet<string>();
+		if ( Events == null ) Events = new HashSet<string>();
 
-			if ( Events.Contains( eventName ) )
-				return;
+		if ( Events.Contains( eventName ) )
+			return;
 
-			Events.Add( eventName );
-		}
+		Events.Add( eventName );
+	}
 
 
-		/// <summary>
-		/// </summary>
-		public void SetTag( string tagName )
-		{
-			// TODO - shall we allow passing data with the event?
+	/// <summary>
+	/// </summary>
+	public void SetTag( string tagName )
+	{
+		// TODO - shall we allow passing data with the event?
 
-			Tags ??= new HashSet<string>();
+		Tags ??= new HashSet<string>();
 
-			if ( Tags.Contains( tagName ) )
-				return;
+		if ( Tags.Contains( tagName ) )
+			return;
 
-			Tags.Add( tagName );
-		}
+		Tags.Add( tagName );
+	}
 
-		/// <summary>
-		/// Allow the controller to tweak input. Empty by default.
-		/// </summary>
-		public virtual void BuildInput()
-		{
+	/// <summary>
+	/// Allow the controller to tweak input. Empty by default.
+	/// </summary>
+	public virtual void BuildInput()
+	{
 
-		}
+	}
 
-		public void Simulate( IClient client, Entity pawn )
-		{
-			Events?.Clear();
-			Tags?.Clear();
+	public void Simulate( IClient client, Entity pawn )
+	{
+		Events?.Clear();
+		Tags?.Clear();
 
-			Pawn = pawn;
-			Client = client;
+		Pawn = pawn;
+		Client = client;
 
-			UpdateFromEntity( pawn );
+		UpdateFromEntity( pawn );
 
-			Simulate();
+		Simulate();
 
-			Finalize( pawn );
-		}
-		
-		public void FrameSimulate( IClient client, Entity pawn )
-		{
-			Pawn = pawn;
-			Client = client;
+		Finalize( pawn );
+	}
+	
+	public void FrameSimulate( IClient client, Entity pawn )
+	{
+		Pawn = pawn;
+		Client = client;
 
-			UpdateFromEntity( pawn );
+		UpdateFromEntity( pawn );
 
-			FrameSimulate();
+		FrameSimulate();
 
-			Finalize( pawn );
-		}
+		Finalize( pawn );
 	}
 }
