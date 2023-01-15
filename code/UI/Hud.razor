@@ -1,0 +1,18 @@
+@using Sandbox;
+@using Sandbox.UI;
+
+@namespace MelTycoon
+@inherits RootPanel
+@attribute [StyleSheet("UI/Hud.scss")]
+
+@code
+{
+    public Hud()
+    {
+        Game.RootPanel = this;
+    }
+}
+
+<root>
+    <Currency/>
+</root>

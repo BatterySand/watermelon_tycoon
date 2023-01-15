@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sandbox;
+﻿using Sandbox;
 
 namespace MelTycoon;
 
-public class Player : BasePlayer
+public partial class Player : BasePlayer
 {
-
 	private TimeSince timeSinceDropped;
 	private TimeSince timeSinceJumpReleased;
 
@@ -59,9 +53,6 @@ public class Player : BasePlayer
 		EnableShadowInFirstPerson = true;
 
 		Clothing.DressEntity( this );
-
-	
-
 		base.Respawn();
 	}
 
@@ -76,7 +67,7 @@ public class Player : BasePlayer
 			PlaySound( "kersplat" );
 		}
 
-		BecomeRagdollOnClient( Velocity, lastDamage.Position, lastDamage.Force, lastDamage.BoneIndex, lastDamage.HasTag( "bullet" ), lastDamage.HasTag( "blast" ) );
+		//BecomeRagdollOnClient( Velocity, lastDamage.Position, lastDamage.Force, lastDamage.BoneIndex, lastDamage.HasTag( "bullet" ), lastDamage.HasTag( "blast" ) );
 
 		Controller = null;
 
@@ -94,11 +85,11 @@ public class Player : BasePlayer
 
 	public override void TakeDamage( DamageInfo info )
 	{
-		if ( info.Attacker.IsValid() )
-		{
-			if ( info.Attacker.Tags.Has( $"{PhysGun.GrabbedTag}{Client.SteamId}" ) )
-				return;
-		}
+		//if ( info.Attacker.IsValid() )
+		//{
+		//	if ( info.Attacker.Tags.Has( $"{PhysGun.GrabbedTag}{Client.SteamId}" ) )
+		//		return;
+		//}
 
 		if ( info.Hitbox.HasTag( "head" ) )
 		{
@@ -132,7 +123,7 @@ public class Player : BasePlayer
 			SimulateAnimation( controller );
 		}
 
-		TickPlayerUse();
+		//TickPlayerUse();
 		SimulateActiveChild( cl, ActiveChild );
 
 		if ( Input.Pressed( InputButton.View ) )
