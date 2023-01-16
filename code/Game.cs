@@ -54,6 +54,17 @@ public partial class MyGame : GameManager
 		}
 	}
 
+	public override void PostLevelLoaded()
+	{
+		base.PostLevelLoaded();
+		//if(Game.Server.MapIdent == "facepunch.flatgrass")
+
+		var plate = new ModelEntity();
+		plate.SetModel( "models/baseplate.vmdl" );
+		plate.SetupPhysicsFromModel( PhysicsMotionType.Static );
+		plate.Position = new Vector3( 1055f, -154f, 0f );
+	}
+
 	[ConCmd.Admin( "spawn_melon" )]
 	public static void SpawnMelon()
 	{

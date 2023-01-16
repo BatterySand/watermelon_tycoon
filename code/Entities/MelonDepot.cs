@@ -48,7 +48,6 @@ public partial class MelonDepot : AnimatedEntity
 			return;
 
 		var spawner = new MelonDepot();
-		spawner.Spawn();
 		spawner.Position = ply.EyePosition + ply.EyeRotation.Forward * 100f;
 	}
 }

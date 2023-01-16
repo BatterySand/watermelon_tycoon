@@ -33,7 +33,6 @@ public partial class MelonSpawner : AnimatedEntity
 		{
 			var melon = new Melon();
 			melon.Tier = TierMelonToSpawn;
-			melon.Spawn();
 			melon.Position = Position + Vector3.Down * 24f;
 			SinceSpawnedMelon = 0;
 		}
@@ -47,7 +46,6 @@ public partial class MelonSpawner : AnimatedEntity
 			return;
 
 		var spawner = new MelonSpawner();
-		spawner.Spawn();
 		spawner.Position = ply.EyePosition + ply.EyeRotation.Forward * 100f;
 	}
 }
