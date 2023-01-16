@@ -1,12 +1,23 @@
-﻿namespace MelTycoon;
+﻿using Editor;
+using Sandbox.UI;
 
+namespace MelTycoon;
+
+[Library( "melon_spawner" ), HammerEntity]
+[ClassName( "melon_spawner" )]
+[Title( "Melon Spawner" ), Category( "Melon Tycoon" ), Icon( "cloud_circle" )]
 public partial class MelonSpawner : AnimatedEntity
 {
 	[Net]
-	public MelonTier TierMelonToSpawn { get; set; }
+	[Property]
+	public MelonTier TierMelonToSpawn { get; set; } = MelonTier.Green;
+
+	[Net]
+	[Property]
+	public float SpawnRate { get; set; } = 5;
+
+	[Net]
 	TimeSince SinceSpawnedMelon { get; set; }
-	TimeSince SinceSpawnedMelonRed { get; set; }
-	TimeSince SinceSpawnedMelonGold { get; set; }
 
 	public override void Spawn()
 	{
@@ -15,41 +26,20 @@ public partial class MelonSpawner : AnimatedEntity
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
 	}
 
-	
-
 	[Event.Tick.Server]
 	private void OnTickServer()
 	{
-		if(SinceSpawnedMelon > 5)
+		if ( SinceSpawnedMelon > SpawnRate )
 		{
 			var melon = new Melon();
-			melon.Tier = MelonTier.Green;
+			melon.Tier = TierMelonToSpawn;
 			melon.Spawn();
 			melon.Position = Position + Vector3.Down * 24f;
 			SinceSpawnedMelon = 0;
 		}
-		if( SinceSpawnedMelonRed  > 10)
-		{
-			var melon = new Melon();
-			melon.Tier = MelonTier.Red;
-			melon.Spawn();
-			melon.RenderColor = Color.Red;
-			melon.Position = Position + Vector3.Down * 24f;
-			SinceSpawnedMelonRed = 0;
-		}
-
-		if(SinceSpawnedMelonGold > 20 )
-		{
-			var melon = new Melon();
-			melon.Tier = MelonTier.Gold;
-			melon.Spawn();
-			melon.RenderColor = Color.Blue;
-			melon.Position = Position + Vector3.Down * 24f;
-			SinceSpawnedMelonGold = 0;
-		}
 	}
 
-	[ConCmd.Server("spawn_melon_spawner")]
+	[ConCmd.Server( "spawn_melon_spawner" )]
 	public static void SpawnMelonSpawner()
 	{
 		var caller = ConsoleSystem.Caller;

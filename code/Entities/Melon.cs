@@ -23,8 +23,14 @@ public partial class Melon : ModelEntity
 	public override void Spawn()
 	{
 		SetModel( "models/sbox_props/watermelon/watermelon.vmdl_c" );
+		RenderColor = Tier switch
+		{
+			MelonTier.Green => Color.Green,
+			MelonTier.Red => Color.Red,
+			MelonTier.Gold => Color.Yellow,
+			_ => Color.White
+		};
 		SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
-		Tags.Add( "interact" );
 		EnableTouch = true;
 		SinceSpawned = 0;
 	}
