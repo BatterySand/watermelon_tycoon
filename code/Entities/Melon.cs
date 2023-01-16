@@ -2,10 +2,21 @@
 
 namespace MelTycoon;
 
+
+public enum MelonTier
+{
+	Green,
+	Red,
+	Gold
+}
+
 public partial class Melon : ModelEntity
 {
 	[Net]
 	public IClient MelonOwner { get; set; }
+
+	[Net]
+	public MelonTier Tier { get; set; }
 
 	TimeSince SinceSpawned { get; set; }
 

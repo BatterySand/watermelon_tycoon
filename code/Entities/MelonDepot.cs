@@ -22,8 +22,22 @@ public partial class MelonDepot : AnimatedEntity
 		if ( mel.MelonOwner.Pawn is not Player ply )
 			return;
 
-		ply.Currency += 10;
+		switch ( mel.Tier )
+		{
+			case MelonTier.Green:
+				ply.Currency += 10;
+				break;
+			case MelonTier.Red:
+				ply.Currency += 20;
+				break;
+			case MelonTier.Gold:
+				ply.Currency += 100;
+				break;
+			default:
+				break;
+		}
 		mel.Delete();
+
 	}
 
 	[ConCmd.Server("spawn_depot")]
