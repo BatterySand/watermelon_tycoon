@@ -1,22 +1,15 @@
 ﻿using Editor;
-using Sandbox.UI;
 
 namespace MelTycoon;
 
 [Library( "melon_spawner" ), HammerEntity]
 [ClassName( "melon_spawner" )]
 [Title( "Melon Spawner" ), Category( "Melon Tycoon" ), Icon( "cloud_circle" )]
-public partial class MelonSpawner : AnimatedEntity
+public partial class MelonSpawner : AnimatedEntity, ISetupFromAsset
 {
 	[Net]
-	[Property]
 	public MelonTier TierMelonToSpawn { get; set; } = MelonTier.Green;
-
-	[Net]
-	[Property]
 	public float SpawnRate { get; set; } = 5;
-
-	[Net]
 	TimeSince SinceSpawnedMelon { get; set; }
 
 	public override void Spawn()
@@ -38,14 +31,14 @@ public partial class MelonSpawner : AnimatedEntity
 		}
 	}
 
-	[ConCmd.Server( "spawn_melon_spawner" )]
-	public static void SpawnMelonSpawner()
+	public void Setup( TycoonMachine def )
 	{
-		var caller = ConsoleSystem.Caller;
-		if ( caller.Pawn is not Player ply )
+		if ( def is not MelonSpawnerDef info )
 			return;
 
-		var spawner = new MelonSpawner();
-		spawner.Position = ply.EyePosition + ply.EyeRotation.Forward * 100f;
+		var spawner = CreateByName<MelonSpawner>( info.ClassName );
+		spawner.Position = Position + info.SpawnPosition;
+		spawner.TierMelonToSpawn = info.TierMelonToSpawn;
+		spawner.SpawnRate = info.SpawnRate;
 	}
 }

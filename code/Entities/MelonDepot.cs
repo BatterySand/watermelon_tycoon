@@ -1,6 +1,7 @@
 ﻿
 namespace MelTycoon;
 
+[ClassName("melon_depot")]
 public partial class MelonDepot : AnimatedEntity
 {
 	public override void Spawn()
@@ -38,16 +39,5 @@ public partial class MelonDepot : AnimatedEntity
 		}
 		mel.Delete();
 
-	}
-
-	[ConCmd.Server("spawn_depot")]
-	public static void SpawnDepot()
-	{
-		var caller = ConsoleSystem.Caller;
-		if ( caller.Pawn is not Player ply )
-			return;
-
-		var spawner = new MelonDepot();
-		spawner.Position = ply.EyePosition + ply.EyeRotation.Forward * 100f;
 	}
 }
