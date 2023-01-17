@@ -1,9 +1,7 @@
-﻿using Sandbox;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MelTycoon;
 
-[System.Obsolete( "This will be deleted soon. It's advised to stop using it if you can." )]
 public class PawnController : BaseNetworkable
 {
 	internal HashSet<string> Events;
@@ -185,7 +183,7 @@ public class PawnController : BaseNetworkable
 
 		Finalize( pawn );
 	}
-	
+
 	public void FrameSimulate( IClient client, Entity pawn )
 	{
 		Pawn = pawn;

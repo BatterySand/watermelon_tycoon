@@ -1,12 +1,6 @@
 ﻿
-using Sandbox;
-
-
-
 namespace MelTycoon;
 
-[Library]
-[System.Obsolete( "This will be deleted soon. It's advised to stop using it if you can." )]
 public class FlyingController : BasePlayerController
 {
 	public float Bounce { get; set; } = 0.25f;

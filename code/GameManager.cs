@@ -1,35 +1,18 @@
-﻿using Sandbox;
-using Sandbox.UI.Construct;
-using System;
-using System.IO;
+﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 
-//
-// You don't need to put things in a namespace, but it doesn't hurt.
-//
 namespace MelTycoon;
 
-/// <summary>
-/// This is your game class. This is an entity that is created serverside when
-/// the game starts, and is replicated to the client. 
-/// 
-/// You can use this to create things like HUDs and declare which player class
-/// to use for spawned players.
-/// </summary>
-public partial class MyGame : GameManager
+public partial class MelGameManager : Sandbox.GameManager
 {
 	public static Player LocalPlayer => Game.LocalPawn as Player;
 
-	public MyGame()
+	public MelGameManager()
 	{
 		if ( Game.IsClient )
 			_ = new Hud();
 	}
 
-	/// <summary>
-	/// A client has joined the server. Make them a pawn to play with
-	/// </summary>
 	public override void ClientJoined( IClient client )
 	{
 		base.ClientJoined( client );
@@ -57,26 +40,15 @@ public partial class MyGame : GameManager
 	public override void PostLevelLoaded()
 	{
 		base.PostLevelLoaded();
-		//if(Game.Server.MapIdent == "facepunch.flatgrass")
+
+		// Right now we have it hardcoded to a "facepunch.flatgrass" configuration.
+		Log.Info( $"Loading map config: {Game.Server.MapIdent}" );
+		if ( Game.Server.MapIdent != "facepunch.flatgrass" )
+			return;
 
 		var plate = new ModelEntity();
 		plate.SetModel( "models/baseplate.vmdl" );
 		plate.SetupPhysicsFromModel( PhysicsMotionType.Static );
 		plate.Position = new Vector3( 1055f, -154f, 0f );
-	}
-
-	[ConCmd.Admin( "spawn_melon" )]
-	public static void SpawnMelon()
-	{
-		var client = ConsoleSystem.Caller;
-		var pawn = client.Pawn;
-
-		if ( pawn is not Player ply )
-			return;
-
-		var pos = ply.EyePosition + ply.EyeRotation.Forward * 64f;
-
-		var m = new Melon();
-		m.Position = pos;
 	}
 }

@@ -9,17 +9,17 @@
 {
 	protected override int BuildHash()
 	{
-		return System.HashCode.Combine(MyGame.LocalPlayer.Currency);
+		return System.HashCode.Combine(MelGameManager.LocalPlayer.Currency);
 	}
 }
 
 <root>
 	@{
-		if (!MyGame.LocalPlayer.IsValid())
+		if (!MelGameManager.LocalPlayer.IsValid())
 			return;
 	}
 	<div class="inner">
-		<label>@MyGame.LocalPlayer.Currency.ToString()</label>
+		<label>@MelGameManager.LocalPlayer.Currency.ToString()</label>
 	</div>
 	<style>
 		Currency {

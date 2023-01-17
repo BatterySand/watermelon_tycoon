@@ -1,10 +1,6 @@
 ﻿
-using Sandbox;
-
 namespace MelTycoon;
 
-[Library]
-[System.Obsolete( "This will be deleted soon. It's advised to stop using it if you can." )]
 public abstract class BasePlayerController : PawnController
 {
 	[ConVar.Replicated( "debug_playercontroller" )]

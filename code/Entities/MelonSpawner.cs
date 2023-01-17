@@ -5,7 +5,7 @@ namespace MelTycoon;
 [Library( "melon_spawner" ), HammerEntity]
 [ClassName( "melon_spawner" )]
 [Title( "Melon Spawner" ), Category( "Melon Tycoon" ), Icon( "cloud_circle" )]
-public partial class MelonSpawner : AnimatedEntity, ISetupFromAsset
+public partial class MelonSpawner : AnimatedEntity, ISetupFromResource
 {
 	[Net]
 	public MelonTier TierMelonToSpawn { get; set; } = MelonTier.Green;

@@ -1,8 +1,6 @@
-﻿using Sandbox;
-
+﻿
 namespace MelTycoon;
 
-[System.Obsolete( "This will be deleted soon. It's advised to stop using it if you can." )]
 public class Unstuck
 {
 	public BasePlayerController Controller;

@@ -1,7 +1,7 @@
 ﻿
 namespace MelTycoon;
 
-internal interface ISetupFromAsset
+internal interface ISetupFromResource
 {
 	void Setup(TycoonMachine def);
 }

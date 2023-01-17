@@ -1,17 +1,10 @@
-﻿using Sandbox;
-using Sandbox.Component;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace MelTycoon;
 
 /// <summary>
-/// This is what you should derive your player from. This base exists in addon code
-/// so we can take advantage of codegen for replication. The side effect is that we
-/// can put stuff in here that we don't need to access from the engine - which gives
-/// more transparency to our code.
+/// Base player copied from s&box. Is now obsolete but for our purposes, we don't mind.
 /// </summary>
-[Title( "Player" ), Icon( "emoji_people" )]
-[System.Obsolete( "This will be deleted soon. It's advised to stop using it if you can." )]
 public partial class BasePlayer : AnimatedEntity
 {
 	/// <summary>
@@ -79,7 +72,7 @@ public partial class BasePlayer : AnimatedEntity
 
 			return;
 		}
-		
+
 		var controller = GetActiveController();
 		controller?.Simulate( cl, this );
 	}
@@ -120,7 +113,7 @@ public partial class BasePlayer : AnimatedEntity
 	/// </summary>
 	public override void OnKilled()
 	{
-		GameManager.Current?.OnKilled( this );
+		Sandbox.GameManager.Current?.OnKilled( this );
 
 		timeSinceDied = 0;
 		LifeState = LifeState.Dead;
@@ -144,7 +137,7 @@ public partial class BasePlayer : AnimatedEntity
 
 		CreateHull();
 
-		GameManager.Current?.MoveToSpawnpoint( this );
+		Sandbox.GameManager.Current?.MoveToSpawnpoint( this );
 		ResetInterpolation();
 	}
 
@@ -376,5 +369,5 @@ public partial class BasePlayer : AnimatedEntity
 	/// Override the aim ray to use the player's eye position and rotation.
 	/// </summary>
 	public override Ray AimRay => new Ray( EyePosition, EyeRotation.Forward );
-	
+
 }
