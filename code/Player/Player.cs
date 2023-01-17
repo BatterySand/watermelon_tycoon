@@ -21,7 +21,7 @@ public partial class Player : BasePlayer
 	/// </summary>
 	public Player()
 	{
-		
+
 	}
 
 	/// <summary>
@@ -179,7 +179,6 @@ public partial class Player : BasePlayer
 				basePlayer.DevController = new NoclipController();
 			}
 		}
-		Log.Info( "Test" );
 	}
 
 	[ConCmd.Admin( "kill" )]
