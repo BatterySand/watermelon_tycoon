@@ -46,9 +46,11 @@ public partial class MelGameManager : Sandbox.GameManager
 		if ( Game.Server.MapIdent != "facepunch.flatgrass" )
 			return;
 
-		var plate = new ModelEntity();
-		plate.SetModel( "models/baseplate.vmdl" );
-		plate.SetupPhysicsFromModel( PhysicsMotionType.Static );
-		plate.Position = new Vector3( 1055f, -154f, 0f );
+		var plate = new Plate
+		{
+			Position = new Vector3( 1055f, -154f, 0f ),
+		};
+
+		plate.CreateClaimButton();
 	}
 }

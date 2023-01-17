@@ -1,0 +1,24 @@
+@namespace MelTycoon
+@inherits Sandbox.UI.WorldPanel
+
+@code
+{
+    public string Label { get; set; }
+}
+
+<root>
+    <label>@Label</label>
+</root>
+
+<style>
+    ButtonText {
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        font-size: 62px;
+        font-family: Poppins;
+        font-weight: bold;
+        color: white;
+        text-stroke: 10px black;
+    }
+</style>

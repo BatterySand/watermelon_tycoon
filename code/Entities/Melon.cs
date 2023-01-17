@@ -47,5 +47,17 @@ public partial class Melon : ModelEntity
 		if ( !Game.IsServer )
 			return;
 	}
+
+
+	[ConCmd.Server( "spawn_melon" )]
+	public static void SpawnMelon()
+	{
+		var caller = ConsoleSystem.Caller;
+		if ( caller.Pawn is not Player ply )
+			return;
+
+		var melon = new Melon();
+		melon.Position = ply.EyePosition + ply.EyeRotation.Forward * 100f;
+	}
 }
 

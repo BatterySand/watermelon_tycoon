@@ -122,6 +122,7 @@ public partial class Player : BasePlayer
 			SimulateAnimation( controller );
 		}
 
+		TickUse();
 		TickPickupRagdollOrProp();
 		SimulateActiveChild( cl, ActiveChild );
 
