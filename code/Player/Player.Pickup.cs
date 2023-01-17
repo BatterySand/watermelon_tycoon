@@ -11,11 +11,23 @@ partial class Player
 
 	private void TickPickupRagdollOrProp()
 	{
-		if ( PickupEntity.IsValid() && PickupEntity.Position.Distance( Position ) > 300f )
+		// Currently holding something, move it where our eyes go.
+		if ( PickupEntity.IsValid() && PickupEntityBody.IsValid() )
 		{
-			PickupEntityBody = null;
-			PickupEntity = null;
+			var velocity = PickupEntityBody.Velocity;
+			Vector3.SmoothDamp( PickupEntityBody.Position, EyePosition + EyeRotation.Forward * holdDistance, ref velocity, 0.1f, Time.Delta * 0.9f );
+			PickupEntityBody.AngularVelocity = Vector3.Zero;
+			PickupEntityBody.Velocity = velocity.ClampLength( 400f );
+
+			if ( PickupEntity.Position.Distance( Position ) > 300f )
+			{
+				PickupEntityBody = null;
+				PickupEntity = null;
+			}
 		}
+
+		if ( !Input.Pressed( InputButton.Use ) )
+			return;
 
 		var trace = Trace.Ray( EyePosition, EyePosition + EyeRotation.Forward * (holdDistance * 2) )
 			.EntitiesOnly()
@@ -25,59 +37,29 @@ partial class Player
 			.Radius( 2f )
 			.Run();
 
-		if ( PickupEntityBody.IsValid() )
-		{
-			var velocity = PickupEntityBody.Velocity;
-			Vector3.SmoothDamp( PickupEntityBody.Position, EyePosition + EyeRotation.Forward * holdDistance, ref velocity, 0.1f, Time.Delta * 0.9f );
-			PickupEntityBody.AngularVelocity = Vector3.Zero;
-			PickupEntityBody.Velocity = velocity.ClampLength( 400f );
-		}
-
-		if ( !Input.Pressed( InputButton.Use ) )
-			return;
-
+		// Pick up the item.
 		var entity = trace.Entity;
-
 		if ( trace.Hit && entity is ModelEntity model && model.PhysicsEnabled )
 		{
-			if ( !PickupEntityBody.IsValid() && model.CollisionBounds.Size.Length < 128f )
+			if ( !PickupEntityBody.IsValid() && model.CollisionBounds.Size.Length < 128f && trace.Body.Mass < 100f )
 			{
-				if ( trace.Body.Mass < 100f )
-				{
-					if ( entity is Melon melon )
-					{
-						melon.MelonOwner = Client;
-					}
-
-					PickupEntityBody = trace.Body;
-					PickupEntity = model;
-					PickupEntity.Tags.Add( "held" );
-					return;
-				}
+				PickupEntityBody = trace.Body;
+				PickupEntity = model;
+				PickupEntity.Tags.Add( "held" );
+				return;
 			}
 		}
 
-		if ( PickupEntityBody.IsValid() )
+		// We're currently holding something and we just pressed the Use key
+		// so lets drop the item.
+		if ( PickupEntity.IsValid() && PickupEntityBody.IsValid() )
 		{
-			trace = Trace.Ray( EyePosition, EyePosition + EyeRotation.Forward * 80f )
-				.WorldOnly()
-				.Ignore( ActiveChild )
-				.Ignore( this )
-				.Radius( 2f )
-				.Run();
-
-			if ( PickupEntityBody.IsValid() )
-			{
-				if ( PickupEntity.IsValid() )
-				{
-					PickupEntityBody.ApplyImpulse( EyeRotation.Forward * PickupEntityBody.Mass );
-					PickupEntity.Tags.Remove( "held" );
-				}
-			}
-
-			TimeSinceDroppedEntity = 0f;
-			PickupEntityBody = null;
-			PickupEntity = null;
+			PickupEntityBody.ApplyImpulse( EyeRotation.Forward * PickupEntityBody.Mass );
+			PickupEntity.Tags.Remove( "held" );
 		}
+
+		TimeSinceDroppedEntity = 0f;
+		PickupEntityBody = null;
+		PickupEntity = null;
 	}
 }
