@@ -54,4 +54,13 @@ public partial class Button : AnimatedEntity, IUse
 	{
 		return user is Player;
 	}
+
+	protected override void OnDestroy()
+	{
+		if ( Game.IsServer )
+			return;
+
+		Text?.Delete();
+		base.OnDestroy();
+	}
 }

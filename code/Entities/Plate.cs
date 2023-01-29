@@ -44,5 +44,16 @@ public partial class Plate : ModelEntity
 		Log.Info( $"Player : {ply} claimed {this} plate." );
 		PlateOwner = ply.Client;
 		Claimed = true;
+
+		var info = ResourceLibrary.Get<TycoonMachine>( "green_melon_spawner.tym" );
+		var spawner = CreateByName( info.ClassName );
+
+		if ( spawner is ISetupFromResource machine )
+		{
+			spawner.Position = Position;
+			machine.Setup( info );
+		}
+
+		btn.Delete();
 	}
 }

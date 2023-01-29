@@ -1,4 +1,5 @@
 ﻿using Editor;
+using System.Runtime.InteropServices;
 
 namespace MelTycoon;
 
@@ -36,9 +37,8 @@ public partial class MelonSpawner : AnimatedEntity, ISetupFromResource
 		if ( def is not MelonSpawnerDef info )
 			return;
 
-		var spawner = CreateByName<MelonSpawner>( info.ClassName );
-		spawner.Position = Position + info.SpawnPosition;
-		spawner.TierMelonToSpawn = info.TierMelonToSpawn;
-		spawner.SpawnRate = info.SpawnRate;
+		Position = Position + info.SpawnPosition;
+		TierMelonToSpawn = info.TierMelonToSpawn;
+		SpawnRate = info.SpawnRate;
 	}
 }

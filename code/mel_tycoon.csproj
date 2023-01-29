@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<AssemblyName>watermelon_tycoon</AssemblyName>
-		<PackageId>watermelon_tycoon</PackageId>
+		<AssemblyName>mel_tycoon</AssemblyName>
+		<PackageId>mel_tycoon</PackageId>
 		<LangVersion>11</LangVersion>
 		<NoWarn>1701;1702;1591;</NoWarn>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -29,7 +29,7 @@
 
   <PropertyGroup>
 	<OutputPath>S:\SteamLibrary\steamapps\common\sbox/.vs/output/</OutputPath>
-	<DocumentationFile>S:\SteamLibrary\steamapps\common\sbox/.vs/output/watermelon_tycoon.xml</DocumentationFile>
+	<DocumentationFile>S:\SteamLibrary\steamapps\common\sbox/.vs/output/mel_tycoon.xml</DocumentationFile>
 	<RootNamespace>Sandbox</RootNamespace>
 	<Nullable>disable</Nullable>
   </PropertyGroup>
