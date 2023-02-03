@@ -1,0 +1,119 @@
+{
+  "SchemaVersion": 1,
+  "Name": null,
+  "Description": null,
+  "Root": {
+    "Guid": "c495e1eb-3ed3-417a-929d-aa60318d127e",
+    "Class": "plate",
+    "Entities": [
+      {
+        "Guid": "f93f8bcf-60a2-4d70-82e3-b6f8686b624f",
+        "Class": "melon_spawner",
+        "Entities": [],
+        "Components": [],
+        "Keys": {
+          "SpawnRate": {
+            "Type": "Single",
+            "Value": "5"
+          },
+          "SpawnOffsetPosition": {
+            "Type": "Vector3",
+            "Value": "\u00220,0,0\u0022"
+          },
+          "MelonDropOffset": {
+            "Type": "Vector3",
+            "Value": "\u00220,3.386,0\u0022"
+          },
+          "TierMelonToSpawn": {
+            "Type": "MelonTier",
+            "Value": "\u0022Green\u0022"
+          },
+          "Model": {
+            "Type": "Model",
+            "Value": "\u0022models/props/ceiling_fixtures/ceiling_aircon_a.vmdl\u0022"
+          },
+          "_name": {
+            "Value": "\u0022Untitled Entity\u0022"
+          },
+          "_localposition": {
+            "Value": "\u002226.844,-134.677,15\u0022"
+          },
+          "_localrotation": {
+            "Value": "\u00220,0,0\u0022"
+          },
+          "_scale": {
+            "Value": "1"
+          },
+          "_tags": {
+            "Value": "\u0022\u0022"
+          }
+        }
+      },
+      {
+        "Guid": "6fb3edb4-825d-452a-b11a-ce3aba479b7b",
+        "Class": "melon_spawner",
+        "Entities": [],
+        "Components": [],
+        "Keys": {
+          "SpawnRate": {
+            "Type": "Single",
+            "Value": "10"
+          },
+          "SpawnOffsetPosition": {
+            "Type": "Vector3",
+            "Value": "\u00220,0,0\u0022"
+          },
+          "MelonDropOffset": {
+            "Type": "Vector3",
+            "Value": "\u00220,0,0\u0022"
+          },
+          "TierMelonToSpawn": {
+            "Type": "MelonTier",
+            "Value": "\u0022Red\u0022"
+          },
+          "_name": {
+            "Value": "\u0022Untitled Entity\u0022"
+          },
+          "_localposition": {
+            "Value": "\u0022-46.20499,-140.842,15\u0022"
+          },
+          "_localrotation": {
+            "Value": "\u00220,0,0\u0022"
+          },
+          "_scale": {
+            "Value": "1"
+          },
+          "_tags": {
+            "Value": "\u0022\u0022"
+          },
+          "Model": {
+            "Type": "Model",
+            "Value": "\u0022models/props/ceiling_fixtures/ceiling_aircon_a.vmdl\u0022"
+          }
+        }
+      }
+    ],
+    "Components": [],
+    "Keys": {
+      "Model": {
+        "Type": "Model",
+        "Value": "\u0022models/baseplate.vmdl\u0022"
+      },
+      "_name": {
+        "Value": "\u0022Plate\u0022"
+      },
+      "_localposition": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_localrotation": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_scale": {
+        "Value": "1"
+      },
+      "_tags": {
+        "Value": "\u0022\u0022"
+      }
+    }
+  }
+}

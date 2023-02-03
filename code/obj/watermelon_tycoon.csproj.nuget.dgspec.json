@@ -1,20 +1,85 @@
 {
   "format": 1,
   "restore": {
-    "c:\\users\\kyler\\documents\\s&box projects\\watermelon_tycoon\\code\\watermelon_tycoon.csproj": {}
+    "E:\\edev\\sbox-projects\\watermelon_tycoon\\code\\watermelon_tycoon.csproj": {}
   },
   "projects": {
-    "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\code\\base.csproj": {
+    "E:\\edev\\sbox-projects\\watermelon_tycoon\\code\\watermelon_tycoon.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\code\\base.csproj",
-        "projectName": "base",
-        "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\code\\base.csproj",
-        "packagesPath": "C:\\Users\\kyler\\.nuget\\packages\\",
-        "outputPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\code\\obj\\",
+        "projectUniqueName": "E:\\edev\\sbox-projects\\watermelon_tycoon\\code\\watermelon_tycoon.csproj",
+        "projectName": "watermelon_tycoon",
+        "projectPath": "E:\\edev\\sbox-projects\\watermelon_tycoon\\code\\watermelon_tycoon.csproj",
+        "packagesPath": "C:\\Users\\dmnMu\\.nuget\\packages\\",
+        "outputPath": "E:\\edev\\sbox-projects\\watermelon_tycoon\\code\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\kyler\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dmnMu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "S:\\SteamLibrary\\steamapps\\common\\sbox\\addons\\base\\code\\Base.csproj": {
+                "projectPath": "S:\\SteamLibrary\\steamapps\\common\\sbox\\addons\\base\\code\\Base.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200-preview.22628.1\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "S:\\SteamLibrary\\steamapps\\common\\sbox\\addons\\base\\code\\Base.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "S:\\SteamLibrary\\steamapps\\common\\sbox\\addons\\base\\code\\Base.csproj",
+        "projectName": "Base",
+        "projectPath": "S:\\SteamLibrary\\steamapps\\common\\sbox\\addons\\base\\code\\Base.csproj",
+        "packagesPath": "C:\\Users\\dmnMu\\.nuget\\packages\\",
+        "outputPath": "S:\\SteamLibrary\\steamapps\\common\\sbox\\addons\\base\\code\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\dmnMu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,66 +120,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "c:\\users\\kyler\\documents\\s&box projects\\watermelon_tycoon\\code\\watermelon_tycoon.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "c:\\users\\kyler\\documents\\s&box projects\\watermelon_tycoon\\code\\watermelon_tycoon.csproj",
-        "projectName": "watermelon_tycoon",
-        "projectPath": "c:\\users\\kyler\\documents\\s&box projects\\watermelon_tycoon\\code\\watermelon_tycoon.csproj",
-        "packagesPath": "C:\\Users\\kyler\\.nuget\\packages\\",
-        "outputPath": "c:\\users\\kyler\\documents\\s&box projects\\watermelon_tycoon\\code\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\kyler\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net7.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
-            "projectReferences": {
-              "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\code\\base.csproj": {
-                "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\code\\base.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200-preview.22628.1\\RuntimeIdentifierGraph.json"
         }
       }
     }

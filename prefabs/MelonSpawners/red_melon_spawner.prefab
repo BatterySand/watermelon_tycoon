@@ -1,0 +1,40 @@
+{
+  "SchemaVersion": 1,
+  "Name": null,
+  "Description": null,
+  "Root": {
+    "Guid": "59a5e5fd-fd35-4187-aa53-c5651a8cdc68",
+    "Class": "melon_spawner",
+    "Entities": [],
+    "Components": [],
+    "Keys": {
+      "_name": {
+        "Value": "\u0022Root Entity\u0022"
+      },
+      "_localposition": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_localrotation": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_scale": {
+        "Value": "1"
+      },
+      "_tags": {
+        "Value": "\u0022\u0022"
+      },
+      "Model": {
+        "Type": "Model",
+        "Value": "\u0022models/props/ceiling_fixtures/ceiling_aircon_a.vmdl\u0022"
+      },
+      "SpawnRate": {
+        "Type": "Single",
+        "Value": "10"
+      },
+      "TierMelonToSpawn": {
+        "Type": "MelonTier",
+        "Value": "\u0022Red\u0022"
+      }
+    }
+  }
+}

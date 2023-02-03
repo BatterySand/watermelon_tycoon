@@ -6,6 +6,7 @@ namespace MelTycoon;
 /// The thing you build all your tycoon stuff on.
 /// </summary>
 [ClassName( "plate" )]
+[Prefab]
 public partial class Plate : ModelEntity
 {
 	[Net]
@@ -18,19 +19,7 @@ public partial class Plate : ModelEntity
 	public override void Spawn()
 	{
 		base.Spawn();
-		SetModel( "models/baseplate.vmdl" );
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
-	}
-
-	public void CreateClaimButton()
-	{
-		// Do this rough for now.
-		// Spawn the button that a player can press to make this Plate theirs.
-		var claimButton = new Button();
-		claimButton.SetupPhysicsFromAABB( PhysicsMotionType.Static, Vector3.One * -8, Vector3.One * 8 );
-		claimButton.TextLabel = "Claim Plate";
-		claimButton.Position = Position + Vector3.Up * 25 + Vector3.Backward * 120f;
-		claimButton.OnPressed += OnClaimButtonPressed;
 	}
 
 	private void OnClaimButtonPressed( Button btn, Player ply )
@@ -45,15 +34,17 @@ public partial class Plate : ModelEntity
 		PlateOwner = ply.Client;
 		Claimed = true;
 
-		var info = ResourceLibrary.Get<TycoonMachine>( "green_melon_spawner.tym" );
-		var spawner = CreateByName( info.ClassName );
-
-		if ( spawner is ISetupFromResource machine )
+		if ( PrefabLibrary.TrySpawn<MelonSpawner>( "prefabs/melonspawners/green_melon_spawner.prefab", out var melSpawner ) )
 		{
-			spawner.Position = Position;
-			machine.Setup( info );
+			melSpawner.Position = Position + melSpawner.SpawnOffsetPosition;
 		}
 
 		btn.Delete();
+	}
+
+	[Event.Tick.Server]
+	private void TickServer()
+	{
+		DebugOverlay.Axis( Position, Rotation, depthTest: false );
 	}
 }

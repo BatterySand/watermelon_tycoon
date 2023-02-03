@@ -1,13 +1,15 @@
 ﻿
+using Sandbox;
+
 namespace MelTycoon;
 
-[ClassName("melon_depot")]
+[ClassName( "melon_depot" )]
+[Prefab]
 public partial class MelonDepot : AnimatedEntity
 {
 	public override void Spawn()
 	{
 		base.Spawn();
-		SetModel( "models/sbox_props/aircon_unit_large/aircon_unit_large_64x64_a.vmdl_c" );
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
 		EnableTouch = true;
 	}

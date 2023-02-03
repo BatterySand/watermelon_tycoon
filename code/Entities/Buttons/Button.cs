@@ -6,14 +6,22 @@ namespace MelTycoon;
 /// <summary>
 /// Generic button.
 /// </summary>
+[Prefab]
 public partial class Button : AnimatedEntity, IUse
 {
 	[Net]
+	[Prefab]
 	public string TextLabel { get; set; }
 
 	public ButtonText Text { get; set; }
 
 	public Action<Button, Player> OnPressed;
+
+	public override void Spawn()
+	{
+		SetupPhysicsFromAABB( PhysicsMotionType.Static, Vector3.One * -8, Vector3.One * 8 );
+		base.Spawn();
+	}
 
 	public override void ClientSpawn()
 	{

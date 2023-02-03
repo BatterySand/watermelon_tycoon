@@ -7,6 +7,8 @@ public partial class MelGameManager : Sandbox.GameManager
 {
 	public static Player LocalPlayer => Game.LocalPawn as Player;
 
+	private static Vector3 DebugSpawnPlayerPosition {get; set;}
+
 	public MelGameManager()
 	{
 		if ( Game.IsClient )
@@ -22,19 +24,8 @@ public partial class MelGameManager : Sandbox.GameManager
 		client.Pawn = pawn;
 		pawn.Respawn();
 
-		// Get all of the spawnpoints
-		var spawnpoints = Entity.All.OfType<SpawnPoint>();
+		pawn.Position = DebugSpawnPlayerPosition;
 
-		// chose a random one
-		var randomSpawnPoint = spawnpoints.OrderBy( x => Guid.NewGuid() ).FirstOrDefault();
-
-		// if it exists, place the pawn there
-		if ( randomSpawnPoint != null )
-		{
-			var tx = randomSpawnPoint.Transform;
-			tx.Position = tx.Position + Vector3.Up * 50.0f; // raise it up
-			pawn.Transform = tx;
-		}
 	}
 
 	public override void PostLevelLoaded()
@@ -46,11 +37,11 @@ public partial class MelGameManager : Sandbox.GameManager
 		if ( Game.Server.MapIdent != "facepunch.flatgrass" )
 			return;
 
-		var plate = new Plate
+		if ( PrefabLibrary.TrySpawn<Plate>( "prefabs/plate.prefab", out var plate ) )
 		{
-			Position = new Vector3( 1055f, -154f, 0f ),
-		};
+			plate.Position = new Vector3( 1055f, -154f, 0f );
+			DebugSpawnPlayerPosition = plate.Position + Vector3.Up * 25f;
+		}
 
-		plate.CreateClaimButton();
 	}
 }

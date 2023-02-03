@@ -1,0 +1,36 @@
+{
+  "SchemaVersion": 1,
+  "Name": null,
+  "Description": null,
+  "Root": {
+    "Guid": "82db3fc4-c042-45ee-a237-ffa2ae5ddade",
+    "Class": "Melon",
+    "Entities": [],
+    "Components": [],
+    "Keys": {
+      "Tier": {
+        "Type": "MelonTier",
+        "Value": "\u0022Green\u0022"
+      },
+      "Model": {
+        "Type": "Model",
+        "Value": "\u0022models/sbox_props/watermelon/watermelon.vmdl\u0022"
+      },
+      "_name": {
+        "Value": "\u0022Melon\u0022"
+      },
+      "_localposition": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_localrotation": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_scale": {
+        "Value": "1"
+      },
+      "_tags": {
+        "Value": "\u0022\u0022"
+      }
+    }
+  }
+}

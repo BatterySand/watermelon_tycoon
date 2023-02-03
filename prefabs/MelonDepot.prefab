@@ -1,0 +1,30 @@
+{
+  "SchemaVersion": 1,
+  "Name": null,
+  "Description": null,
+  "Root": {
+    "Guid": "cc9cb2da-decc-4207-a128-8823afade47c",
+    "Class": "melon_depot",
+    "Entities": [],
+    "Components": [],
+    "Keys": {
+      "Model": {
+        "Type": "Model",
+        "Value": "\u0022models/sbox_props/aircon_unit_large/aircon_unit_large_64x64_a.vmdl\u0022"
+      },
+      "_name": {
+        "Value": "\u0022Melon Depot\u0022"
+      },
+      "_localposition": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_localrotation": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_scale": {
+        "Value": "1"
+      },
+      "_tags": {}
+    }
+  }
+}
