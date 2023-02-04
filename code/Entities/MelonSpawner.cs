@@ -21,6 +21,9 @@ public partial class MelonSpawner : AnimatedEntity
 	[Prefab]
 	public Vector3 MelonDropOffset { get; set; }
 
+	[Prefab]
+	public MachineInfo MachineInfo { get; set; }
+
 	TimeSince SinceSpawnedMelon { get; set; }
 
 	public override void Spawn()

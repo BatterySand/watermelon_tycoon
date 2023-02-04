@@ -36,8 +36,8 @@
         "Value": "\u0022Green\u0022"
       },
       "Data": {
-        "Type": "TycoonMachineData",
-        "Value": "\u0022prefabs/melonspawners/green.tym\u0022"
+        "Type": "TycoonMachine",
+        "Value": "\u0022prefabs/melonspawners/test.tym\u0022"
       },
       "SpawnOffsetPosition": {
         "Type": "Vector3",

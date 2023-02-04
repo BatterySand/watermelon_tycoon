@@ -26,6 +26,21 @@ partial class Player
 			}
 		}
 
+		if ( Input.Pressed( InputButton.PrimaryAttack ) )
+		{
+			// We're currently holding something, throw it.
+			if ( PickupEntity.IsValid() && PickupEntityBody.IsValid() )
+			{
+				PickupEntityBody.ApplyImpulse( EyeRotation.Forward * PickupEntityBody.Mass * 400 );
+				PickupEntity.Tags.Remove( "held" );
+			}
+
+			TimeSinceDroppedEntity = 0f;
+			PickupEntityBody = null;
+			PickupEntity = null;
+			return;
+		}
+
 		if ( !Input.Pressed( InputButton.Use ) )
 			return;
 

@@ -7,7 +7,7 @@ public partial class MelGameManager : Sandbox.GameManager
 {
 	public static Player LocalPlayer => Game.LocalPawn as Player;
 
-	private static Vector3 DebugSpawnPlayerPosition {get; set;}
+	private static Vector3 DebugSpawnPlayerPosition { get; set; }
 
 	public MelGameManager()
 	{
@@ -37,11 +37,15 @@ public partial class MelGameManager : Sandbox.GameManager
 		if ( Game.Server.MapIdent != "facepunch.flatgrass" )
 			return;
 
-		if ( PrefabLibrary.TrySpawn<Plate>( "prefabs/plate.prefab", out var plate ) )
-		{
-			plate.Position = new Vector3( 1055f, -154f, 0f );
-			DebugSpawnPlayerPosition = plate.Position + Vector3.Up * 25f;
-		}
+		if ( !PrefabLibrary.TrySpawn<Plate>( "prefabs/plate.prefab", out var plate ) )
+			return;
 
+		plate.Position = new Vector3( 1055f, -154f, 0f );
+		DebugSpawnPlayerPosition = plate.Position + Vector3.Up * 25f + Vector3.Backward * 100;
+
+		if ( !PrefabLibrary.TrySpawn<MelonSpawner>( "prefabs/melonspawners/green_melon_spawner.prefab", out var melonSpawner ) )
+			return;
+
+		melonSpawner.Position = plate.Position + melonSpawner.MachineInfo.SpawnPosition;
 	}
 }

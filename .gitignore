@@ -10,4 +10,5 @@ tools_thumbnail_cache.bin
 *.xml
 *.dll
 *.pdb
+*.cache
 maps/editor/_bakeresourcecache/toolscene_default_baked/*
