@@ -4,19 +4,20 @@ namespace MelTycoon;
 public enum MelonTier
 {
 	Green,
-	Red,
-	Gold
+	Blue,
+	Red
 }
 
 [Prefab]
 public partial class Melon : ModelEntity
 {
 	[Net]
-	public IClient MelonOwner { get; set; }
+	[Prefab]
+	public MelonTier Tier { get; set; }
 
 	[Net]
 	[Prefab]
-	public MelonTier Tier { get; set; }
+	public float AutoDeleteTime { get; set; } = 10;
 
 	TimeSince SinceSpawned { get; set; }
 
@@ -27,28 +28,28 @@ public partial class Melon : ModelEntity
 		SinceSpawned = 0;
 	}
 
-	[Event.Tick.Server]
-	private void OnTickServer()
-	{
-		// TODO: Do this only on first tick.
-		RenderColor = Tier switch
-		{
-			MelonTier.Green => Color.Green,
-			MelonTier.Red => Color.Red,
-			MelonTier.Gold => Color.Yellow,
-			_ => Color.White
-		};
-
-		if ( SinceSpawned >= 20 )
-			Delete();
-	}
-
 	public override void Touch( Entity other )
 	{
 		base.Touch( other );
 
 		if ( !Game.IsServer )
 			return;
+	}
+
+	[Event.Tick.Server]
+	private void OnTickServer()
+	{
+		// TODO: Do this only on first tick.
+		RenderColor = Tier switch
+		{
+			MelonTier.Green => Color.White,
+			MelonTier.Blue => Color.Blue,
+			MelonTier.Red => Color.Red,
+			_ => Color.White
+		};
+
+		if ( SinceSpawned >= AutoDeleteTime )
+			Delete();
 	}
 
 	[ConCmd.Server( "spawn_melon" )]

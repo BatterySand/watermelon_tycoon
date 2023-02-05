@@ -78,8 +78,8 @@ public partial class Player : BasePlayer
 			child.EnableDrawing = false;
 		}
 
-		Inventory.DropActive();
-		Inventory.DeleteContents();
+		Inventory?.DropActive();
+		Inventory?.DeleteContents();
 	}
 
 	public override void TakeDamage( DamageInfo info )
@@ -111,6 +111,7 @@ public partial class Player : BasePlayer
 	{
 		base.Simulate( cl );
 
+		Log.Info( GroundEntity );
 		if ( LifeState != LifeState.Alive )
 			return;
 

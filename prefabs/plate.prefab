@@ -26,6 +26,10 @@
       },
       "_tags": {
         "Value": "\u0022\u0022"
+      },
+      "Prefabs": {
+        "Type": "List\u00601",
+        "Value": "[\r\n  \u0022prefabs/melonspawners/green_melon_spawner.prefab\u0022,\r\n  \u0022prefabs/machines/market.prefab\u0022,\r\n  \u0022prefabs/buttons/buy_packager_button.prefab\u0022\r\n]"
       }
     }
   }

@@ -6,7 +6,40 @@
     "Guid": "59a5e5fd-fd35-4187-aa53-c5651a8cdc68",
     "Class": "melon_spawner",
     "Entities": [],
-    "Components": [],
+    "Components": [
+      {
+        "Guid": "a2f4472e-bd86-4b33-b585-717fc3c8203f",
+        "Class": "SpawnOffsetComponent",
+        "Keys": {
+          "Position": {
+            "Type": "Vector3",
+            "Value": "\u00220,0,18\u0022"
+          },
+          "_name": {
+            "Value": "\u0022New Component\u0022"
+          },
+          "_tags": {
+            "Value": "[]"
+          },
+          "Rotation": {
+            "Type": "Rotation",
+            "Value": "\u00220,0,0,1\u0022"
+          }
+        }
+      },
+      {
+        "Guid": "7b54d27d-18c5-4064-ae71-2b0af3929188",
+        "Class": "PlayerOwnerComponent",
+        "Keys": {
+          "_name": {
+            "Value": "\u0022New Component\u0022"
+          },
+          "_tags": {
+            "Value": "[]"
+          }
+        }
+      }
+    ],
     "Keys": {
       "_name": {
         "Value": "\u0022Melon Spawner\u0022"
@@ -50,6 +83,14 @@
       "MachineInfo": {
         "Type": "MachineInfo",
         "Value": "\u0022prefabs/melonspawners/green_melon_spawner.tym\u0022"
+      },
+      "OverrideRotation": {
+        "Type": "Rotation",
+        "Value": "\u00220,0,0,1\u0022"
+      },
+      "MaxMelonGrowth": {
+        "Type": "Single",
+        "Value": "0"
       }
     }
   }

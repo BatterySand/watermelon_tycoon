@@ -1,5 +1,4 @@
-﻿using System;
-using static Sandbox.Event;
+﻿using System.Collections.Generic;
 
 namespace MelTycoon;
 
@@ -11,6 +10,10 @@ namespace MelTycoon;
 public partial class Plate : ModelEntity, IPostSpawn
 {
 	[Net]
+	[Prefab]
+	public IList<Prefab> Prefabs { get; set; }
+
+	[Net]
 	public IClient PlateOwner { get; set; }
 
 	// May not be needed at a later date.
@@ -21,21 +24,27 @@ public partial class Plate : ModelEntity, IPostSpawn
 	{
 		base.Spawn();
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
-	
+
 	}
 
 	public void Setup()
 	{
-		SpawnMachine<MelonSpawner>( "prefabs/melonspawners/green_melon_spawner.prefab" );
-		SpawnMachine<MelonPackager>( "prefabs/machines/melonpackager/melon_packager.prefab" );
+		foreach ( var p in Prefabs )
+		{
+			SpawnMachine<Entity>( p.ResourcePath );
+		}
 	}
 
-	public void SpawnMachine<T>( string prefabPath ) where T : Machine
+	public void SpawnMachine<T>( string prefabPath ) where T : Entity
 	{
+		if ( !Game.IsServer )
+			return;
+
 		if ( !PrefabLibrary.TrySpawn<T>( prefabPath, out var spawned ) )
 			return;
 
-		spawned.PlayerOwner = PlateOwner;
+		var owner = spawned.Components.GetOrCreate<PlayerOwnerComponent>();
+		owner.Client = PlateOwner;
 		spawned.Position = Position;
 	}
 

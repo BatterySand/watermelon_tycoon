@@ -16,17 +16,17 @@ public partial class MelonSpawner : Machine
 	public float SpawnRate { get; set; } = 5;
 
 	[Prefab]
-	public Vector3 SpawnOffsetPosition { get; set; }
-
-	[Prefab]
 	public Vector3 MelonDropOffset { get; set; }
 
-	TimeSince SinceSpawnedMelon { get; set; }
+	TimeSince SinceLastMelonSpawned { get; set; }
+	private PlayerOwnerComponent _ownerComp;
+
 
 	public override void Spawn()
 	{
 		base.Spawn();
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
+		SinceLastMelonSpawned = 0;
 	}
 
 	protected override void Setup()
@@ -35,24 +35,25 @@ public partial class MelonSpawner : Machine
 		RenderColor = TierMelonToSpawn switch
 		{
 			MelonTier.Green => Color.Green,
+			MelonTier.Blue => Color.Blue,
 			MelonTier.Red => Color.Red,
-			MelonTier.Gold => Color.Yellow,
 			_ => Color.White
 		};
+
+		_ownerComp = Components.Get<PlayerOwnerComponent>();
 	}
 
 	[Event.Tick.Server]
 	private void OnTickServer()
 	{
-		if ( SinceSpawnedMelon > SpawnRate && PrefabLibrary.TrySpawn<Melon>( "prefabs/melons/melon.prefab", out var melon ) )
+		if ( SinceLastMelonSpawned > SpawnRate && PrefabLibrary.TrySpawn<Melon>( "prefabs/melons/melon.prefab", out var melon ) )
 		{
 			melon.Tier = TierMelonToSpawn;
 			melon.Position = Position + MelonDropOffset;
-			melon.MelonOwner = PlayerOwner;
 
-			SinceSpawnedMelon = 0;
+			var comp = melon.Components.GetOrCreate<PlayerOwnerComponent>();
+			comp.Client = _ownerComp.Client;
+			SinceLastMelonSpawned = 0;
 		}
-
-		DebugOverlay.Sphere( Position + MelonDropOffset, 2f, Color.Green, depthTest: false );
 	}
 }

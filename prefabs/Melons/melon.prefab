@@ -6,7 +6,18 @@
     "Guid": "82db3fc4-c042-45ee-a237-ffa2ae5ddade",
     "Class": "Melon",
     "Entities": [],
-    "Components": [],
+    "Components": [
+      {
+        "Guid": "038e9a01-9b13-4bf7-91aa-4819a046a9a0",
+        "Class": "PlayerOwnerComponent",
+        "Keys": {
+          "_name": {
+            "Value": "\u0022New Component\u0022"
+          },
+          "_tags": {}
+        }
+      }
+    ],
     "Keys": {
       "Tier": {
         "Type": "MelonTier",
@@ -30,6 +41,10 @@
       },
       "_tags": {
         "Value": "\u0022\u0022"
+      },
+      "AutoDeleteTime": {
+        "Type": "Single",
+        "Value": "20"
       }
     }
   }

@@ -7,15 +7,15 @@ namespace MelTycoon;
 [ClassName( "melon_packager" )]
 public partial class MelonPackager : Machine
 {
-	[Prefab]
 	[Net]
+	[Prefab]
 	public int ThresholdToPackage { get; set; }
 
 	[Net]
 	public int CurrentMelonCount { get; set; }
 
-	[Prefab]
 	[Net]
+	[Prefab]
 	public Vector3 TextPanelPosition { get; set; }
 
 	public TextWorldPanel TextPanel { get; set; }
@@ -49,7 +49,6 @@ public partial class MelonPackager : Machine
 	[Event.Tick.Server]
 	private void Tick()
 	{
-		Rotation = OverrideRotation;
 	}
 
 	public override void StartTouch( Entity other )
@@ -57,7 +56,7 @@ public partial class MelonPackager : Machine
 		if ( other is not Melon mel )
 			return;
 
-		if ( mel.MelonOwner.Pawn is not Player ply )
+		if ( mel.Components.Get<PlayerOwnerComponent>().Client.Pawn is not Player ply )
 			return;
 
 		CurrentMelonCount++;

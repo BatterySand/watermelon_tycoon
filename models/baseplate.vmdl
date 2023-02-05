@@ -11,7 +11,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models\\dmx\\mesh\\baseplate.dmx"
+						filename = "models/plate.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -32,13 +32,30 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeBox"
+						_class = "PhysicsHullFromRender"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ -0.125214, -0.923523, -2.309616 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 1024.592529, 705.936279, 39.240204 ]
+						faceMergeAngle = 20.0
+						maxHullVertices = 32
+					},
+				]
+			},
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "cube.001.vmat"
+								to = "materials/concrete/damage/concrete_damage_edgecaps.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
 					},
 				]
 			},

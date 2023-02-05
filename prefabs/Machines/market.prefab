@@ -1,0 +1,101 @@
+{
+  "SchemaVersion": 1,
+  "Name": null,
+  "Description": null,
+  "Root": {
+    "Guid": "f6127055-a165-43f3-a5d8-3a7b69e2bb66",
+    "Class": "Market",
+    "Entities": [
+      {
+        "Guid": "8190ef5c-1b15-4869-95c0-95488d13d957",
+        "Class": "model_entity",
+        "Entities": [],
+        "Components": [],
+        "Keys": {
+          "Model": {
+            "Type": "Model",
+            "Value": "\u0022models/sbox_props/pallet/pallet.vmdl\u0022"
+          },
+          "_name": {
+            "Value": "\u0022Pallet\u0022"
+          },
+          "_localposition": {
+            "Value": "\u00220,96.10503,0\u0022"
+          },
+          "_localrotation": {
+            "Value": "\u00220,0,0\u0022"
+          },
+          "_scale": {
+            "Value": "2.992999"
+          },
+          "_tags": {
+            "Value": "\u0022\u0022"
+          }
+        }
+      }
+    ],
+    "Components": [
+      {
+        "Guid": "e3e4b9f8-4cf5-4bad-8bc5-edb5d55c4b93",
+        "Class": "PlayerOwnerComponent",
+        "Keys": {
+          "_name": {
+            "Value": "\u0022New Component\u0022"
+          },
+          "_tags": {
+            "Value": "[]"
+          }
+        }
+      },
+      {
+        "Guid": "2b4beef9-a254-4ba6-97c6-7ce13b771265",
+        "Class": "SpawnOffsetComponent",
+        "Keys": {
+          "Position": {
+            "Type": "Vector3",
+            "Value": "\u0022231,-250,18\u0022"
+          },
+          "Rotation": {
+            "Type": "Rotation",
+            "Value": "\u00220,0,0,1\u0022"
+          },
+          "_name": {
+            "Value": "\u0022New Component\u0022"
+          },
+          "_tags": {
+            "Value": "[]"
+          }
+        }
+      }
+    ],
+    "Keys": {
+      "Model": {
+        "Type": "Model",
+        "Value": "\u0022models/sbox_props/aircon_unit_large/aircon_unit_large_128x64_a.vmdl\u0022"
+      },
+      "_name": {
+        "Value": "\u0022Market\u0022"
+      },
+      "_localposition": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_localrotation": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_scale": {
+        "Value": "1"
+      },
+      "_tags": {
+        "Value": "\u0022\u0022"
+      },
+      "OverrideRotation": {
+        "Type": "Rotation",
+        "Value": "\u00220,0,0,1\u0022"
+      },
+      "MachineInfo": {
+        "Type": "MachineInfo",
+        "Value": "\u0022prefabs/machines/market.tym\u0022"
+      }
+    }
+  }
+}

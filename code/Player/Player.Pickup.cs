@@ -18,6 +18,7 @@ partial class Player
 			Vector3.SmoothDamp( PickupEntityBody.Position, EyePosition + EyeRotation.Forward * holdDistance, ref velocity, 0.1f, Time.Delta * 0.9f );
 			PickupEntityBody.AngularVelocity = Vector3.Zero;
 			PickupEntityBody.Velocity = velocity.ClampLength( 400f );
+			PickupEntity.Rotation = Rotation.Lerp(PickupEntity.Rotation, EyeRotation, Time.Delta * 8f);
 
 			if ( PickupEntity.Position.Distance( Position ) > 300f )
 			{

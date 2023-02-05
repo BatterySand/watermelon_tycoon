@@ -1,0 +1,109 @@
+{
+  "SchemaVersion": 1,
+  "Name": null,
+  "Description": null,
+  "Root": {
+    "Guid": "d164c444-f8c3-4dd7-8e48-a6dd72da1151",
+    "Class": "mel_button",
+    "Entities": [
+      {
+        "Guid": "ca796d1e-30a2-4f6b-a3c7-5bf731608f9c",
+        "Class": "WorldPanelEntity",
+        "Entities": [],
+        "Components": [],
+        "Keys": {
+          "Text": {
+            "Type": "String",
+            "Value": "\u0022Buy Packager\u0022"
+          },
+          "_name": {
+            "Value": "\u0022World Panel\u0022"
+          },
+          "_localposition": {
+            "Value": "\u00220,0,5\u0022"
+          },
+          "_localrotation": {
+            "Value": "\u00220,0,0\u0022"
+          },
+          "_scale": {
+            "Value": "1"
+          },
+          "_tags": {
+            "Value": "\u0022\u0022"
+          }
+        }
+      }
+    ],
+    "Components": [
+      {
+        "Guid": "1eea569e-4662-4e0e-879c-ac711154a3e0",
+        "Class": "SpawnOffsetComponent",
+        "Keys": {
+          "Position": {
+            "Type": "Vector3",
+            "Value": "\u0022-16,256,18\u0022"
+          },
+          "_name": {
+            "Value": "\u0022SpawnOffsetComponent\u0022"
+          },
+          "_tags": {
+            "Value": "[]"
+          },
+          "Rotation": {
+            "Type": "Rotation",
+            "Value": "\u00220,0,0,1\u0022"
+          }
+        }
+      },
+      {
+        "Guid": "90a97d0d-a8d4-4532-b3cb-d112ef0377d1",
+        "Class": "CostComponent",
+        "Keys": {
+          "Price": {
+            "Type": "Int32",
+            "Value": "5"
+          },
+          "_name": {
+            "Value": "\u0022New Component\u0022"
+          },
+          "_tags": {
+            "Value": "[]"
+          }
+        }
+      }
+    ],
+    "Keys": {
+      "_name": {
+        "Value": "\u0022BuyPackagerButton\u0022"
+      },
+      "_localposition": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_localrotation": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_scale": {
+        "Value": "1"
+      },
+      "_tags": {
+        "Value": "\u0022\u0022"
+      },
+      "TextLabel": {
+        "Type": "String",
+        "Value": "\u0022Buy Packager\u0022"
+      },
+      "EventToRun": {
+        "Type": "String",
+        "Value": "\u0022buy.packager\u0022"
+      },
+      "Price": {
+        "Type": "Int32",
+        "Value": "5"
+      },
+      "SpawnPosition": {
+        "Type": "Vector3",
+        "Value": "\u00220,280,18\u0022"
+      }
+    }
+  }
+}

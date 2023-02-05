@@ -31,11 +31,35 @@ public partial class MelGameManager : GameManager
 	{
 		base.PostLevelLoaded();
 
-		if ( !PrefabLibrary.TrySpawn<SpawnPlateButton>( "prefabs/buttons/spawn_plate_button.prefab", out var claimButton ) )
+		var tr = Trace.Ray( Vector3.Up * 128f, Vector3.Down ).WorldOnly().Run();
+
+		if ( !PrefabLibrary.TrySpawn<Entity>( "prefabs/buttons/spawn_plate_button.prefab", out var claimButton ) )
 			return;
 
-		claimButton.TextLabel = "Claim Plate";
-		claimButton.Position = new Vector3( 1055f, -154f, 0f );
+		claimButton.Position = tr.Hit ? tr.HitPosition : Vector3.Up * 16f;
 	}
 
+
+	[ConCmd.Client( "get_offset" )]
+	public static void GetOffset()
+	{
+		if ( ConsoleSystem.Caller.Pawn is not Player ply )
+			return;
+
+		var tr = Trace.Ray( ply.EyePosition, ply.EyePosition + ply.EyeRotation.Forward * 1000 )
+			.EntitiesOnly()
+			.WithTag( "solid" )
+			.Run();
+
+		if ( tr.Entity is not Plate plate )
+			return;
+
+		var offset = tr.HitPosition - plate.Position;
+		var offsetRounded = new Vector3( offset.x.Floor(), offset.y.Floor(), offset.z.Floor() );
+
+		Sandbox.UI.Clipboard.SetText( offsetRounded.ToString() );
+		Log.Info( offsetRounded.ToString() );
+		DebugOverlay.Sphere( tr.HitPosition, 2f, Color.Blue, 10 );
+		DebugOverlay.Text( offsetRounded.ToString(), tr.HitPosition, 10 );
+	}
 }

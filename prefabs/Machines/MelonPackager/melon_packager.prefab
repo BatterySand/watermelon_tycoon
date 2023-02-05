@@ -6,7 +6,22 @@
     "Guid": "01359247-588b-43e9-8493-94850ce9d796",
     "Class": "melon_packager",
     "Entities": [],
-    "Components": [],
+    "Components": [
+      {
+        "Guid": "48c58714-079f-4610-95d4-f3adac8562e8",
+        "Class": "SpawnOffsetComponent",
+        "Keys": {
+          "Position": {
+            "Type": "Vector3",
+            "Value": "\u0022350,0,18\u0022"
+          },
+          "_name": {
+            "Value": "\u0022New Component\u0022"
+          },
+          "_tags": {}
+        }
+      }
+    ],
     "Keys": {
       "Model": {
         "Type": "Model",
