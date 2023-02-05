@@ -41,7 +41,11 @@
       },
       "TextPanelPosition": {
         "Type": "Vector3",
-        "Value": "\u002232,0,32\u0022"
+        "Value": "\u0022-32.72299,5,35.50299\u0022"
+      },
+      "OverrideRotation": {
+        "Type": "Rotation",
+        "Value": "\u0022-0,0,-1,-0.0000005205486\u0022"
       }
     }
   }
