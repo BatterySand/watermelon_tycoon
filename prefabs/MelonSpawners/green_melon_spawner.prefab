@@ -46,6 +46,10 @@
       "MelonDropOffset": {
         "Type": "Vector3",
         "Value": "\u00220,0,25\u0022"
+      },
+      "MachineInfo": {
+        "Type": "MachineInfo",
+        "Value": "\u0022prefabs/melonspawners/green_melon_spawner.tym\u0022"
       }
     }
   }

@@ -13,7 +13,7 @@ public partial class Button : AnimatedEntity, IUse
 	[Prefab]
 	public string TextLabel { get; set; }
 
-	public ButtonText Text { get; set; }
+	public ButtonText TextPanel { get; set; }
 
 	public Action<Button, Player> OnPressed;
 
@@ -25,15 +25,15 @@ public partial class Button : AnimatedEntity, IUse
 
 	public override void ClientSpawn()
 	{
-		Text = new ButtonText();
-		Text.Position = Position;
-		Text.Label = TextLabel;
+		TextPanel = new ButtonText();
+		TextPanel.Position = Position;
+		TextPanel.Label = TextLabel;
 	}
 
 	public virtual bool Press( Player ply )
 	{
 		OnPressed?.Invoke( this, ply );
-		return false;
+		return true;
 	}
 
 	[Event.Tick.Server]
@@ -47,7 +47,7 @@ public partial class Button : AnimatedEntity, IUse
 	{
 		// Billboard effect for the text, always face player's view.
 		var ply = MelGameManager.LocalPlayer;
-		Text.Rotation = Rotation.LookAt( ply.EyeRotation.Backward, Vector3.Up );
+		TextPanel.Rotation = Rotation.LookAt( ply.EyeRotation.Backward, Vector3.Up );
 	}
 
 	public bool OnUse( Entity user )
@@ -68,7 +68,7 @@ public partial class Button : AnimatedEntity, IUse
 		if ( Game.IsServer )
 			return;
 
-		Text?.Delete();
+		TextPanel?.Delete();
 		base.OnDestroy();
 	}
 }

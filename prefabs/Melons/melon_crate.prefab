@@ -3,17 +3,17 @@
   "Name": null,
   "Description": null,
   "Root": {
-    "Guid": "cc9cb2da-decc-4207-a128-8823afade47c",
-    "Class": "melon_depot",
+    "Guid": "1cc3bacc-b5ab-451d-ac0e-450a46b0560b",
+    "Class": "MelonCrate",
     "Entities": [],
     "Components": [],
     "Keys": {
       "Model": {
         "Type": "Model",
-        "Value": "\u0022models/sbox_props/aircon_unit_large/aircon_unit_large_64x64_a.vmdl\u0022"
+        "Value": "\u0022models/sbox_props/wooden_crate/wooden_crate.vmdl\u0022"
       },
       "_name": {
-        "Value": "\u0022Melon Depot\u0022"
+        "Value": "\u0022Melon Crate\u0022"
       },
       "_localposition": {
         "Value": "\u00220,0,0\u0022"

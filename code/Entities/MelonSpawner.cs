@@ -6,7 +6,7 @@ namespace MelTycoon;
 [Library( "melon_spawner" ), HammerEntity]
 [ClassName( "melon_spawner" )]
 [Title( "Melon Spawner" ), Category( "Melon Tycoon" ), Icon( "cloud_circle" )]
-public partial class MelonSpawner : AnimatedEntity
+public partial class MelonSpawner : Machine
 {
 	[Net]
 	[Prefab]
@@ -21,9 +21,6 @@ public partial class MelonSpawner : AnimatedEntity
 	[Prefab]
 	public Vector3 MelonDropOffset { get; set; }
 
-	[Prefab]
-	public MachineInfo MachineInfo { get; set; }
-
 	TimeSince SinceSpawnedMelon { get; set; }
 
 	public override void Spawn()
@@ -32,9 +29,9 @@ public partial class MelonSpawner : AnimatedEntity
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
 	}
 
-	[Event.Tick.Server]
-	private void OnTickServer()
+	protected override void Setup()
 	{
+		base.Setup();
 		RenderColor = TierMelonToSpawn switch
 		{
 			MelonTier.Green => Color.Green,
@@ -42,11 +39,17 @@ public partial class MelonSpawner : AnimatedEntity
 			MelonTier.Gold => Color.Yellow,
 			_ => Color.White
 		};
+	}
 
+	[Event.Tick.Server]
+	private void OnTickServer()
+	{
 		if ( SinceSpawnedMelon > SpawnRate && PrefabLibrary.TrySpawn<Melon>( "prefabs/melons/melon.prefab", out var melon ) )
 		{
 			melon.Tier = TierMelonToSpawn;
 			melon.Position = Position + MelonDropOffset;
+			melon.MelonOwner = PlayerOwner;
+
 			SinceSpawnedMelon = 0;
 		}
 

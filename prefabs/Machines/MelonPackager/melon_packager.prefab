@@ -1,0 +1,48 @@
+{
+  "SchemaVersion": 1,
+  "Name": null,
+  "Description": null,
+  "Root": {
+    "Guid": "01359247-588b-43e9-8493-94850ce9d796",
+    "Class": "melon_packager",
+    "Entities": [],
+    "Components": [],
+    "Keys": {
+      "Model": {
+        "Type": "Model",
+        "Value": "\u0022models/sbox_props/aircon_unit_large/aircon_unit_large_64x64_a.vmdl\u0022"
+      },
+      "_name": {
+        "Value": "\u0022Melon Packager\u0022"
+      },
+      "_localposition": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_localrotation": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_scale": {
+        "Value": "1"
+      },
+      "_tags": {
+        "Value": "\u0022\u0022"
+      },
+      "Tier": {
+        "Type": "MelonTier",
+        "Value": "\u0022Green\u0022"
+      },
+      "MachineInfo": {
+        "Type": "MachineInfo",
+        "Value": "\u0022prefabs/machines/melonpackager/melon_packager.tym\u0022"
+      },
+      "ThresholdToPackage": {
+        "Type": "Int32",
+        "Value": "10"
+      },
+      "TextPanelPosition": {
+        "Type": "Vector3",
+        "Value": "\u002232,0,32\u0022"
+      }
+    }
+  }
+}

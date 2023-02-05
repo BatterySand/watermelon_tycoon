@@ -4,7 +4,7 @@
   "Description": null,
   "Root": {
     "Guid": "8b78c7b7-9c6f-40b7-8400-12afd2c01c2f",
-    "Class": "Button",
+    "Class": "SpawnPlateButton",
     "Entities": [],
     "Components": [],
     "Keys": {
@@ -28,7 +28,13 @@
       "_scale": {
         "Value": "1"
       },
-      "_tags": {}
+      "_tags": {
+        "Value": "\u0022\u0022"
+      },
+      "PlateSpawnPosition": {
+        "Type": "Vector3",
+        "Value": "\u00220,0,0\u0022"
+      }
     }
   }
 }

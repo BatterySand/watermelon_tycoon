@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Sandbox;
+using System;
+using System.IO;
 using System.Linq;
 
 namespace MelTycoon;
 
-public partial class MelGameManager : Sandbox.GameManager
+public partial class MelGameManager : GameManager
 {
 	public static Player LocalPlayer => Game.LocalPawn as Player;
-
-	private static Vector3 DebugSpawnPlayerPosition { get; set; }
 
 	public MelGameManager()
 	{
@@ -22,30 +22,20 @@ public partial class MelGameManager : Sandbox.GameManager
 		// Create a pawn for this client to play with
 		var pawn = new Player();
 		client.Pawn = pawn;
+
 		pawn.Respawn();
-
-		pawn.Position = DebugSpawnPlayerPosition;
-
+		pawn.Position = Vector3.One * 200;
 	}
 
 	public override void PostLevelLoaded()
 	{
 		base.PostLevelLoaded();
 
-		// Right now we have it hardcoded to a "facepunch.flatgrass" configuration.
-		Log.Info( $"Loading map config: {Game.Server.MapIdent}" );
-		if ( Game.Server.MapIdent != "facepunch.flatgrass" )
+		if ( !PrefabLibrary.TrySpawn<SpawnPlateButton>( "prefabs/buttons/spawn_plate_button.prefab", out var claimButton ) )
 			return;
 
-		if ( !PrefabLibrary.TrySpawn<Plate>( "prefabs/plate.prefab", out var plate ) )
-			return;
-
-		plate.Position = new Vector3( 1055f, -154f, 0f );
-		DebugSpawnPlayerPosition = plate.Position + Vector3.Up * 25f + Vector3.Backward * 100;
-
-		if ( !PrefabLibrary.TrySpawn<MelonSpawner>( "prefabs/melonspawners/green_melon_spawner.prefab", out var melonSpawner ) )
-			return;
-
-		melonSpawner.Position = plate.Position + melonSpawner.MachineInfo.SpawnPosition;
+		claimButton.TextLabel = "Claim Plate";
+		claimButton.Position = new Vector3( 1055f, -154f, 0f );
 	}
+
 }

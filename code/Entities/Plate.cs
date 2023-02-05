@@ -1,4 +1,5 @@
 ﻿using System;
+using static Sandbox.Event;
 
 namespace MelTycoon;
 
@@ -7,7 +8,7 @@ namespace MelTycoon;
 /// </summary>
 [ClassName( "plate" )]
 [Prefab]
-public partial class Plate : ModelEntity
+public partial class Plate : ModelEntity, IPostSpawn
 {
 	[Net]
 	public IClient PlateOwner { get; set; }
@@ -20,26 +21,22 @@ public partial class Plate : ModelEntity
 	{
 		base.Spawn();
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
+	
 	}
 
-	private void OnClaimButtonPressed( Button btn, Player ply )
+	public void Setup()
 	{
-		if ( !Game.IsServer )
+		SpawnMachine<MelonSpawner>( "prefabs/melonspawners/green_melon_spawner.prefab" );
+		SpawnMachine<MelonPackager>( "prefabs/machines/melonpackager/melon_packager.prefab" );
+	}
+
+	public void SpawnMachine<T>( string prefabPath ) where T : Machine
+	{
+		if ( !PrefabLibrary.TrySpawn<T>( prefabPath, out var spawned ) )
 			return;
 
-		if ( Claimed )
-			return;
-
-		Log.Info( $"Player : {ply} claimed {this} plate." );
-		PlateOwner = ply.Client;
-		Claimed = true;
-
-		if ( PrefabLibrary.TrySpawn<MelonSpawner>( "prefabs/melonspawners/green_melon_spawner.prefab", out var melSpawner ) )
-		{
-			melSpawner.Position = Position + melSpawner.SpawnOffsetPosition;
-		}
-
-		btn.Delete();
+		spawned.PlayerOwner = PlateOwner;
+		spawned.Position = Position;
 	}
 
 	[Event.Tick.Server]
