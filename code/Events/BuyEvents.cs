@@ -9,4 +9,12 @@ public static class BuyEvents
 		{
 		}
 	}
+
+	public const string BuyPallet = "buy.pallet";
+	public partial class BuyPalletEventAttribute : Sandbox.EventAttribute
+	{
+		public BuyPalletEventAttribute() : base( BuyPallet )
+		{
+		}
+	}
 }

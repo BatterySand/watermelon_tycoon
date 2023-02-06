@@ -24,15 +24,12 @@ public partial class Plate : ModelEntity, IPostSpawn
 	{
 		base.Spawn();
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
-
 	}
 
 	public void Setup()
 	{
 		foreach ( var p in Prefabs )
-		{
 			SpawnMachine<Entity>( p.ResourcePath );
-		}
 	}
 
 	public void SpawnMachine<T>( string prefabPath ) where T : Entity
@@ -40,12 +37,21 @@ public partial class Plate : ModelEntity, IPostSpawn
 		if ( !Game.IsServer )
 			return;
 
-		if ( !PrefabLibrary.TrySpawn<T>( prefabPath, out var spawned ) )
+		if ( !PrefabLibrary.TrySpawn<T>( prefabPath, out var machine ) )
 			return;
 
-		var owner = spawned.Components.GetOrCreate<PlayerOwnerComponent>();
+		var owner = machine.Components.GetOrCreate<PlayerOwnerComponent>();
 		owner.Client = PlateOwner;
-		spawned.Position = Position;
+		owner.Player = PlateOwner.Pawn as Player;
+
+		machine.Position = Position;
+
+		if ( !machine.Components.TryGet<SpawnOffsetComponent>( out var spawnOffset ) )
+			return;
+
+		machine.Position += spawnOffset.OffsetPosition;
+		machine.Rotation = spawnOffset.OffsetRotation;
+
 	}
 
 	[Event.Tick.Server]

@@ -18,7 +18,17 @@
           "_name": {
             "Value": "\u0022New Component\u0022"
           },
-          "_tags": {}
+          "_tags": {
+            "Value": "[]"
+          },
+          "OffsetPosition": {
+            "Type": "Vector3",
+            "Value": "\u0022293,0,18\u0022"
+          },
+          "OffsetRotation": {
+            "Type": "Rotation",
+            "Value": "\u00220,0,0,1\u0022"
+          }
         }
       }
     ],
@@ -52,7 +62,7 @@
       },
       "ThresholdToPackage": {
         "Type": "Int32",
-        "Value": "10"
+        "Value": "1"
       },
       "TextPanelPosition": {
         "Type": "Vector3",

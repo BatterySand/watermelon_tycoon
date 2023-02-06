@@ -30,6 +30,10 @@
           },
           "_tags": {
             "Value": "\u0022\u0022"
+          },
+          "Offset": {
+            "Type": "Vector3",
+            "Value": "\u00220,0,7.754001\u0022"
           }
         }
       }
@@ -50,6 +54,14 @@
             "Value": "[]"
           },
           "Rotation": {
+            "Type": "Rotation",
+            "Value": "\u00220,0,0,1\u0022"
+          },
+          "OffsetPosition": {
+            "Type": "Vector3",
+            "Value": "\u00221,212,18\u0022"
+          },
+          "OffsetRotation": {
             "Type": "Rotation",
             "Value": "\u00220,0,0,1\u0022"
           }

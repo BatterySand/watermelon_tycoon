@@ -19,8 +19,8 @@ public partial class MelonSpawner : Machine
 	public Vector3 MelonDropOffset { get; set; }
 
 	TimeSince SinceLastMelonSpawned { get; set; }
-	private PlayerOwnerComponent _ownerComp;
 
+	private PlayerOwnerComponent _ownerComp;
 
 	public override void Spawn()
 	{
@@ -29,9 +29,9 @@ public partial class MelonSpawner : Machine
 		SinceLastMelonSpawned = 0;
 	}
 
-	protected override void Setup()
+	[Event.Tick.Server]
+	private void OnTickServer()
 	{
-		base.Setup();
 		RenderColor = TierMelonToSpawn switch
 		{
 			MelonTier.Green => Color.Green,
@@ -40,12 +40,8 @@ public partial class MelonSpawner : Machine
 			_ => Color.White
 		};
 
-		_ownerComp = Components.Get<PlayerOwnerComponent>();
-	}
+		_ownerComp ??= Components.Get<PlayerOwnerComponent>();
 
-	[Event.Tick.Server]
-	private void OnTickServer()
-	{
 		if ( SinceLastMelonSpawned > SpawnRate && PrefabLibrary.TrySpawn<Melon>( "prefabs/melons/melon.prefab", out var melon ) )
 		{
 			melon.Tier = TierMelonToSpawn;
@@ -53,6 +49,7 @@ public partial class MelonSpawner : Machine
 
 			var comp = melon.Components.GetOrCreate<PlayerOwnerComponent>();
 			comp.Client = _ownerComp.Client;
+			comp.Player = _ownerComp.Client.Pawn as Player;
 			SinceLastMelonSpawned = 0;
 		}
 	}

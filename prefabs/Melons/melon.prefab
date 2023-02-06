@@ -14,7 +14,9 @@
           "_name": {
             "Value": "\u0022New Component\u0022"
           },
-          "_tags": {}
+          "_tags": {
+            "Value": "[]"
+          }
         }
       }
     ],
@@ -25,7 +27,7 @@
       },
       "Model": {
         "Type": "Model",
-        "Value": "\u0022models/sbox_props/watermelon/watermelon.vmdl\u0022"
+        "Value": "\u0022weapons/rust_pistol/rust_pistol.vmdl\u0022"
       },
       "_name": {
         "Value": "\u0022Melon\u0022"

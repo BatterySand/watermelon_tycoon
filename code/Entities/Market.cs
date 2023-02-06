@@ -11,6 +11,8 @@ public partial class Market : Machine
 
 	private ModelEntity _pallet { get; set; }
 
+	RealTimeSince LastPalletScanTime { get; set; } = 0;
+
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -24,7 +26,6 @@ public partial class Market : Machine
 
 	public override void ClientSpawn()
 	{
-
 		_pallet = (ModelEntity)Children.First(); // TODO: maybe fix this?
 	}
 
@@ -40,6 +41,28 @@ public partial class Market : Machine
 	private void Tick()
 	{
 		_pallet.EnableDrawing = HasPallet;
+
+		if ( !HasPallet )
+			return;
+
+		if ( LastPalletScanTime > 10 )
+		{
+			var box = new BBox( Position + Rotation.Left * 100, 100 );
+			DebugOverlay.Box( box, Color.Random, 2 );
+			var tr = Entity.FindInBox( box );
+			foreach ( var e in tr )
+			{
+				if ( e is not MelonCrate crate )
+					continue;
+
+				if ( Components.TryGet<PlayerOwnerComponent>( out var owner ) )
+					owner.Player.Currency += 10;
+
+				crate.Delete();
+			}
+
+			LastPalletScanTime = 0;
+		}
 	}
 
 	public override void StartTouch( Entity other )
@@ -49,10 +72,10 @@ public partial class Market : Machine
 		if ( other is not Melon melon )
 			return;
 
-		if ( melon.Components.Get<PlayerOwnerComponent>().Client.Pawn is not Player ply )
+		if ( !melon.Components.TryGet<PlayerOwnerComponent>( out var owner ) )
 			return;
 
-		ply.Currency += 1;
+		owner.Player.Currency += 1;
 		melon.Delete();
 	}
 }

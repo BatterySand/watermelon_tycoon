@@ -3,30 +3,38 @@
   "Name": null,
   "Description": null,
   "Root": {
-    "Guid": "f6127055-a165-43f3-a5d8-3a7b69e2bb66",
-    "Class": "Market",
+    "Guid": "4bfc936a-0785-4dbf-ac13-b7214a6447ca",
+    "Class": "mel_button",
     "Entities": [
       {
-        "Guid": "8190ef5c-1b15-4869-95c0-95488d13d957",
-        "Class": "model_entity",
+        "Guid": "6965af9c-b29d-420b-ba68-3f96f5928264",
+        "Class": "WorldPanelEntity",
         "Entities": [],
         "Components": [],
         "Keys": {
-          "Model": {
-            "Type": "Model",
-            "Value": "\u0022models/sbox_props/pallet/pallet.vmdl\u0022"
+          "Text": {
+            "Type": "String",
+            "Value": "\u0022Buy Pallet\u0022"
+          },
+          "Offset": {
+            "Type": "Vector3",
+            "Value": "\u00220,0,5\u0022"
+          },
+          "RotOffset": {
+            "Type": "Rotation",
+            "Value": "\u00220,0,0,1\u0022"
           },
           "_name": {
-            "Value": "\u0022Pallet\u0022"
+            "Value": "\u0022Untitled Entity\u0022"
           },
           "_localposition": {
-            "Value": "\u00220,96.10503,0\u0022"
+            "Value": "\u00220,0,0\u0022"
           },
           "_localrotation": {
             "Value": "\u00220,0,0\u0022"
           },
           "_scale": {
-            "Value": "2.992999"
+            "Value": "1"
           },
           "_tags": {
             "Value": "\u0022\u0022"
@@ -36,24 +44,12 @@
     ],
     "Components": [
       {
-        "Guid": "e3e4b9f8-4cf5-4bad-8bc5-edb5d55c4b93",
-        "Class": "PlayerOwnerComponent",
-        "Keys": {
-          "_name": {
-            "Value": "\u0022New Component\u0022"
-          },
-          "_tags": {
-            "Value": "[]"
-          }
-        }
-      },
-      {
-        "Guid": "2b4beef9-a254-4ba6-97c6-7ce13b771265",
+        "Guid": "d878504a-fe29-411f-be17-50ed7d919791",
         "Class": "SpawnOffsetComponent",
         "Keys": {
           "Position": {
             "Type": "Vector3",
-            "Value": "\u0022222,-359,18\u0022"
+            "Value": "\u0022-10,142,18\u0022"
           },
           "Rotation": {
             "Type": "Rotation",
@@ -67,22 +63,26 @@
           },
           "OffsetPosition": {
             "Type": "Vector3",
-            "Value": "\u0022111,-320,18\u0022"
+            "Value": "\u00223,156,18\u0022"
           },
           "OffsetRotation": {
             "Type": "Rotation",
-            "Value": "\u00220.000000000000000000000000966144,0.000000002677601,-0.0000000000000003608246,1\u0022"
+            "Value": "\u00220,0,0,1\u0022"
           }
         }
       }
     ],
     "Keys": {
-      "Model": {
-        "Type": "Model",
-        "Value": "\u0022models/rust_props/barricades/barricade.stone.vmdl\u0022"
+      "Price": {
+        "Type": "Int32",
+        "Value": "10"
+      },
+      "EventToRun": {
+        "Type": "String",
+        "Value": "\u0022buy.pallet\u0022"
       },
       "_name": {
-        "Value": "\u0022Market\u0022"
+        "Value": "\u0022Root Entity\u0022"
       },
       "_localposition": {
         "Value": "\u00220,0,0\u0022"
@@ -95,14 +95,6 @@
       },
       "_tags": {
         "Value": "\u0022\u0022"
-      },
-      "OverrideRotation": {
-        "Type": "Rotation",
-        "Value": "\u00220,0,0,1\u0022"
-      },
-      "MachineInfo": {
-        "Type": "MachineInfo",
-        "Value": "\u0022prefabs/machines/market.tym\u0022"
       }
     }
   }

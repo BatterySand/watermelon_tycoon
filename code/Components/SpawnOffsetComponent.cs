@@ -6,11 +6,10 @@ public partial class SpawnOffsetComponent : EntityComponent
 {
 	[Net]
 	[Prefab]
-	public Vector3 Position { get; set; }
+	public Vector3 OffsetPosition { get; set; }
 
 	[Net]
 	[Prefab]
-	public Rotation Rotation { get; set; }
+	public Rotation OffsetRotation { get; set; }
+
 }
-
-

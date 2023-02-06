@@ -24,6 +24,14 @@
           "Rotation": {
             "Type": "Rotation",
             "Value": "\u00220,0,0,1\u0022"
+          },
+          "OffsetPosition": {
+            "Type": "Vector3",
+            "Value": "\u00220,0,18\u0022"
+          },
+          "OffsetRotation": {
+            "Type": "Rotation",
+            "Value": "\u00220,0,0,1\u0022"
           }
         }
       },

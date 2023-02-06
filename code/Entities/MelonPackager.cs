@@ -43,7 +43,7 @@ public partial class MelonPackager : Machine
 		TextPanel.Label = CurrentMelonCount.ToString();
 		TextPanel.Style.FontSize = Length.Pixels( 512 );
 		TextPanel.Position = Position + Rotation.Forward + TextPanelPosition;
-		TextPanel.Rotation = Rotation;
+		TextPanel.Rotation = Rotation.FromAxis( Vector3.Up, 180 );
 	}
 
 	[Event.Tick.Server]
@@ -56,7 +56,7 @@ public partial class MelonPackager : Machine
 		if ( other is not Melon mel )
 			return;
 
-		if ( mel.Components.Get<PlayerOwnerComponent>().Client.Pawn is not Player ply )
+		if ( !mel.Components.TryGet<PlayerOwnerComponent>(out var owner))
 			return;
 
 		CurrentMelonCount++;

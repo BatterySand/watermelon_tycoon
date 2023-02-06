@@ -30,7 +30,7 @@ public partial class Button : AnimatedEntity, IUse, IPostSpawn
 		if ( !Components.TryGet<SpawnOffsetComponent>( out var so, true ) )
 			return;
 
-		Position += so.Position;
+		Position += so.OffsetPosition;
 	}
 
 	public override void Spawn()
