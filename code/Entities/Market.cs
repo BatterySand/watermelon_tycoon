@@ -33,9 +33,7 @@ public partial class Market : Machine
 	{
 
 		_pallet.EnableDrawing = newValue;
-		_pallet.EnableAllCollisions = newValue;
 	}
-
 
 	[Event.Tick.Server]
 	private void Tick()
@@ -47,7 +45,7 @@ public partial class Market : Machine
 
 		if ( LastPalletScanTime > 10 )
 		{
-			var box = new BBox( Position + Rotation.Left * 100, 100 );
+			var box = new BBox( Position + Rotation.Left * 100, 125 );
 			DebugOverlay.Box( box, Color.Random, 2 );
 			var tr = Entity.FindInBox( box );
 			foreach ( var e in tr )
