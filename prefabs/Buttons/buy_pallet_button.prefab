@@ -75,7 +75,7 @@
     "Keys": {
       "Price": {
         "Type": "Int32",
-        "Value": "10"
+        "Value": "1"
       },
       "EventToRun": {
         "Type": "String",

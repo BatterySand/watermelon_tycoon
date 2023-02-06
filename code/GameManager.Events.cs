@@ -21,8 +21,11 @@ public partial class MelGameManager
 		if ( Game.IsClient )
 			return;
 
-		Log.Info( $"{ply} bought a Pallet Upgrade" );
-		var market = All.OfType<Market>().Where( x => x.Components.Get<PlayerOwnerComponent>().Player == ply ).First();
+		var plate = ply.Plate;
+		var market = plate.Children.OfType<Market>().Where( x => x.Components.Get<PlayerOwnerComponent>().Player == ply ).First();
 		market.HasPallet = true;
+
+		plate.AddButton( "prefabs/buttons/buy_packager_button.prefab" );
+		Log.Info( $"{ply} bought a Pallet Upgrade" );
 	}
 }

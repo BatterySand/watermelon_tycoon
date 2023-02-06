@@ -8,7 +8,7 @@ namespace MelTycoon;
 /// </summary>
 [Prefab]
 [ClassName( "mel_button" )]
-public partial class Button : AnimatedEntity, IUse, IPostSpawn
+public partial class Button : AnimatedEntity, IUse
 {
 	[Net]
 	[Prefab]
@@ -23,20 +23,9 @@ public partial class Button : AnimatedEntity, IUse, IPostSpawn
 
 	public Action<Button, Player> OnPressed;
 
-	public async void PostSpawn()
-	{
-		await GameTask.Delay( 1 );
-
-		if ( !Components.TryGet<SpawnOffsetComponent>( out var so, true ) )
-			return;
-
-		Position += so.OffsetPosition;
-	}
-
 	public override void Spawn()
 	{
 		SetupPhysicsFromAABB( PhysicsMotionType.Static, Vector3.One * -8, Vector3.One * 8 );
-		PostSpawn();
 		base.Spawn();
 	}
 
@@ -47,6 +36,10 @@ public partial class Button : AnimatedEntity, IUse, IPostSpawn
 	public virtual bool Press( Player ply )
 	{
 		OnPressed?.Invoke( this, ply );
+		Delete();
+		foreach ( var c in Children )
+			c.Delete();
+
 		return true;
 	}
 

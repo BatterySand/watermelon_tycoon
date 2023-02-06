@@ -9,6 +9,7 @@ public partial class Market : Machine
 	[Net, Change( nameof( OnHasPalletChanged ) )]
 	public bool HasPallet { get; set; }
 
+	[Net]
 	private ModelEntity _pallet { get; set; }
 
 	RealTimeSince LastPalletScanTime { get; set; } = 0;
@@ -16,22 +17,19 @@ public partial class Market : Machine
 	public override void Spawn()
 	{
 		base.Spawn();
+		Transmit = TransmitType.Always;
+
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
 		EnableTouch = true;
-		_pallet = (ModelEntity)Children.First(); // TODO: maybe fix this?
+
+		_pallet = Children.Where( x => x.Name == "pallet" ).First() as ModelEntity;
 		_pallet.SetupPhysicsFromModel( PhysicsMotionType.Static );
 		_pallet.EnableAllCollisions = false;
 		_pallet.EnableDrawing = false;
 	}
 
-	public override void ClientSpawn()
-	{
-		_pallet = (ModelEntity)Children.First(); // TODO: maybe fix this?
-	}
-
 	public void OnHasPalletChanged( bool oldValue, bool newValue )
 	{
-
 		_pallet.EnableDrawing = newValue;
 	}
 

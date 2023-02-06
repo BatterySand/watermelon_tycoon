@@ -7,7 +7,7 @@ namespace MelTycoon;
 /// </summary>
 [ClassName( "plate" )]
 [Prefab]
-public partial class Plate : ModelEntity, IPostSpawn
+public partial class Plate : ModelEntity
 {
 	[Net]
 	[Prefab]
@@ -49,9 +49,30 @@ public partial class Plate : ModelEntity, IPostSpawn
 		if ( !machine.Components.TryGet<SpawnOffsetComponent>( out var spawnOffset ) )
 			return;
 
-		machine.Position += spawnOffset.OffsetPosition;
-		machine.Rotation = spawnOffset.OffsetRotation;
+		var tx = new Transform( spawnOffset.OffsetPosition, spawnOffset.OffsetRotation );
+		machine.SetParent( this, null, tx );
+	}
 
+	public Button AddButton( string path )
+	{
+		if ( !Game.IsServer )
+			return null;
+
+		if ( !PrefabLibrary.TrySpawn<Button>( path, out var btn ) )
+			return null;
+
+		var owner = btn.Components.GetOrCreate<PlayerOwnerComponent>();
+		owner.Client = PlateOwner;
+		owner.Player = PlateOwner.Pawn as Player;
+
+		if ( !btn.Components.TryGet<SpawnOffsetComponent>( out var spawnOffset ) )
+			return null;
+
+		var tx = new Transform( spawnOffset.OffsetPosition, spawnOffset.OffsetRotation );
+
+		btn.SetParent( this, null, tx );
+
+		return btn;
 	}
 
 	[Event.Tick.Server]
