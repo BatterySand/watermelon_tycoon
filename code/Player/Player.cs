@@ -111,7 +111,6 @@ public partial class Player : BasePlayer
 	{
 		base.Simulate( cl );
 
-		Log.Info( GroundEntity );
 		if ( LifeState != LifeState.Alive )
 			return;
 
