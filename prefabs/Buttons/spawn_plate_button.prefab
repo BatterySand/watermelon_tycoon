@@ -9,33 +9,7 @@
       {
         "Guid": "e0133cbd-2c6a-4741-8c41-d7d17b33899f",
         "Class": "SpawnPlateButton",
-        "Entities": [
-          {
-            "Guid": "50d1b9d2-cd76-486c-b9a6-001c1c107d86",
-            "Class": "WorldPanelEntity",
-            "Entities": [],
-            "Components": [],
-            "Keys": {
-              "Text": {
-                "Type": "String",
-                "Value": "\u0022Spawn Plate\u0022"
-              },
-              "_name": {
-                "Value": "\u0022Untitled Entity\u0022"
-              },
-              "_localposition": {
-                "Value": "\u00220,0,0\u0022"
-              },
-              "_localrotation": {
-                "Value": "\u00220,0,0\u0022"
-              },
-              "_scale": {
-                "Value": "1"
-              },
-              "_tags": {}
-            }
-          }
-        ],
+        "Entities": [],
         "Components": [],
         "Keys": {
           "PlateSpawnPosition": {
@@ -68,6 +42,45 @@
           "EventToRun": {
             "Type": "String",
             "Value": "\u0022buy.melon_packager\u0022"
+          },
+          "NumStages": {
+            "Type": "Int32",
+            "Value": "0"
+          }
+        }
+      },
+      {
+        "Guid": "eef3310f-9503-420c-a8dd-d74a61f414e1",
+        "Class": "LabelPanelEntity",
+        "Entities": [],
+        "Components": [],
+        "Keys": {
+          "Text": {
+            "Type": "String",
+            "Value": "\u0022Spawn Plate\u0022"
+          },
+          "Offset": {
+            "Type": "Vector3",
+            "Value": "\u0022-16.407,0,44.186\u0022"
+          },
+          "RotOffset": {
+            "Type": "Rotation",
+            "Value": "\u00220,0,0,1\u0022"
+          },
+          "_name": {
+            "Value": "\u0022Untitled Entity\u0022"
+          },
+          "_localposition": {
+            "Value": "\u00220,0,0\u0022"
+          },
+          "_localrotation": {
+            "Value": "\u00220,0,0\u0022"
+          },
+          "_scale": {
+            "Value": "1"
+          },
+          "_tags": {
+            "Value": "\u0022\u0022"
           }
         }
       }

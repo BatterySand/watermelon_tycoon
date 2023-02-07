@@ -2,7 +2,7 @@
 namespace MelTycoon;
 
 [Prefab]
-public partial class WorldPanelEntity : Entity
+public partial class LabelPanelEntity : Entity
 {
 	[Net]
 	[Prefab]
@@ -16,7 +16,7 @@ public partial class WorldPanelEntity : Entity
 	[Prefab]
 	public Rotation RotOffset { get; set; }
 
-	public TextWorldPanel Panel { get; set; }
+	public LabelPanel Panel { get; set; }
 
 	public override void Spawn()
 	{
@@ -26,7 +26,7 @@ public partial class WorldPanelEntity : Entity
 
 	public override void ClientSpawn()
 	{
-		Panel ??= new TextWorldPanel();
+		Panel ??= new LabelPanel();
 	}
 
 	protected override void OnDestroy()

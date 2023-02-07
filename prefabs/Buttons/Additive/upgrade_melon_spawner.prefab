@@ -3,22 +3,22 @@
   "Name": null,
   "Description": null,
   "Root": {
-    "Guid": "4bfc936a-0785-4dbf-ac13-b7214a6447ca",
+    "Guid": "1ccfd10d-c0de-44fa-90a3-92564d32ccfd",
     "Class": "mel_button",
     "Entities": [
       {
-        "Guid": "7149ebcb-894d-400a-977d-46f93a0324ba",
+        "Guid": "e2080a32-d4b4-4f06-8c21-7273828b8ce8",
         "Class": "LabelPanelEntity",
         "Entities": [],
         "Components": [],
         "Keys": {
           "Text": {
             "Type": "String",
-            "Value": "\u0022Buy Pallet\u0022"
+            "Value": "\u0022Upgrade Melon Spawner\u0022"
           },
           "Offset": {
             "Type": "Vector3",
-            "Value": "\u00220,0,14.898\u0022"
+            "Value": "\u00220,0,5\u0022"
           },
           "RotOffset": {
             "Type": "Rotation",
@@ -42,47 +42,22 @@
         }
       }
     ],
-    "Components": [
-      {
-        "Guid": "d878504a-fe29-411f-be17-50ed7d919791",
-        "Class": "SpawnOffsetComponent",
-        "Keys": {
-          "Position": {
-            "Type": "Vector3",
-            "Value": "\u0022-10,142,18\u0022"
-          },
-          "Rotation": {
-            "Type": "Rotation",
-            "Value": "\u00220,0,0,1\u0022"
-          },
-          "_name": {
-            "Value": "\u0022New Component\u0022"
-          },
-          "_tags": {
-            "Value": "[]"
-          },
-          "OffsetPosition": {
-            "Type": "Vector3",
-            "Value": "\u00223,156,18\u0022"
-          },
-          "OffsetRotation": {
-            "Type": "Rotation",
-            "Value": "\u00220,0,0,1\u0022"
-          }
-        }
-      }
-    ],
+    "Components": [],
     "Keys": {
+      "NumStages": {
+        "Type": "Int32",
+        "Value": "3"
+      },
       "Price": {
         "Type": "Int32",
-        "Value": "1"
+        "Value": "5"
       },
       "EventToRun": {
         "Type": "String",
-        "Value": "\u0022buy.pallet\u0022"
+        "Value": "\u0022awdawdawdawdaw\u0022"
       },
       "_name": {
-        "Value": "\u0022Root Entity\u0022"
+        "Value": "\u0022Upgrade Spawner Button\u0022"
       },
       "_localposition": {
         "Value": "\u00220,0,0\u0022"
@@ -95,10 +70,6 @@
       },
       "_tags": {
         "Value": "\u0022\u0022"
-      },
-      "NumStages": {
-        "Type": "Int32",
-        "Value": "0"
       }
     }
   }

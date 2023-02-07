@@ -12,41 +12,25 @@ partial class Player
 	private void TickUse()
 	{
 		// This is serverside only
-		if ( !Game.IsServer ) return;
+		if ( !Game.IsServer )
+			return;
 
-		// Turn prediction off
-		using ( Prediction.Off() )
+		if ( Input.Pressed( InputButton.Use ) )
 		{
-			if ( Input.Pressed( InputButton.Use ) )
-			{
-				Using = FindUsable();
+			Using = FindUsable();
 
-				if ( Using == null )
-				{
-					UseFail();
-					return;
-				}
-			}
-
-			if ( !Input.Down( InputButton.Use ) )
+			if ( Using == null )
 			{
-				StopUsing();
+				UseFail();
 				return;
 			}
 
-			if ( !Using.IsValid() )
-				return;
-
-			// If we move too far away or something we should probably ClearUse()?
-
-			//
-			// If use returns true then we can keep using it
-			//
-			if ( Using is IUse use && use.OnUse( this ) )
-				return;
-
-			StopUsing();
 		}
+
+		if ( Using is IUse use && use.OnUse( this ) )
+			StopUsing();
+
+		return;
 	}
 
 	/// <summary>
@@ -71,11 +55,7 @@ partial class Player
 	/// </summary>
 	protected bool IsValidUseEntity( Entity e )
 	{
-		if ( e == null ) return false;
-		if ( e is not IUse use ) return false;
-		if ( !use.IsUsable( this ) ) return false;
-
-		return true;
+		return (e != null && e is IUse use && use.IsUsable( this ));
 	}
 
 	/// <summary>

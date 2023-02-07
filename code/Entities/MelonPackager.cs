@@ -18,7 +18,7 @@ public partial class MelonPackager : Machine
 	[Prefab]
 	public Vector3 TextPanelPosition { get; set; }
 
-	public TextWorldPanel TextPanel { get; set; }
+	public LabelPanel TextPanel { get; set; }
 
 	public override void Spawn()
 	{
@@ -30,7 +30,7 @@ public partial class MelonPackager : Machine
 	public override void ClientSpawn()
 	{
 		base.ClientSpawn();
-		TextPanel = new TextWorldPanel();
+		TextPanel = new LabelPanel();
 		TextPanel.Position = Position;
 	}
 

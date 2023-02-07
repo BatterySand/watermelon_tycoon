@@ -80,4 +80,35 @@ public partial class Plate : ModelEntity
 	{
 		DebugOverlay.Axis( Position, Rotation, depthTest: false );
 	}
+
+	[ConCmd.Admin( "mel_plate_spawn_prefab" )]
+	public static void SpawnPrefabCommand( string path )
+	{
+		Log.Info( path );
+		if ( ConsoleSystem.Caller.Pawn is not Player ply )
+			return;
+
+		if ( !ply.Plate.IsValid() )
+			return;
+
+		var tr = Trace.Ray( ply.EyePosition, ply.EyePosition + ply.EyeRotation.Forward * 1000f )
+			.WithoutTags( "player" )
+			.Run();
+
+		DebugOverlay.TraceResult( tr, 10 );
+		if ( !tr.Hit || tr.Entity != ply.Plate )
+			return;
+
+		if ( !PrefabLibrary.TrySpawn<Entity>( path, out var created ) )
+			return;
+
+		if ( created.Components.TryGet<SpawnOffsetComponent>( out var spawnOffset ) )
+		{
+			created.SetParent( ply.Plate, null, new Transform( spawnOffset.OffsetPosition, spawnOffset.OffsetRotation ) );
+		}
+		else
+		{
+			created.SetParent( ply.Plate, null, new Transform( tr.HitPosition, Rotation.Identity ) );
+		}
+	}
 }

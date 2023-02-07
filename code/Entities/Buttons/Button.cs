@@ -1,5 +1,4 @@
 ﻿using System;
-using Sandbox.UI;
 
 namespace MelTycoon;
 
@@ -16,10 +15,18 @@ public partial class Button : AnimatedEntity, IUse
 
 	[Net]
 	[Prefab]
+	public int NumStages { get; set; } = 0;
+
+	[Net]
+	[Prefab]
 	public string EventToRun { get; set; }
 
 	[Net]
 	public bool Used { get; set; }
+
+	[Net]
+	public int NumPresses { get; set; }
+	public TimeSince LastPressed { get; private set; } = 0;
 
 	public Action<Button, Player> OnPressed;
 
@@ -35,10 +42,21 @@ public partial class Button : AnimatedEntity, IUse
 
 	public virtual bool Press( Player ply )
 	{
+		if ( ply.Currency < Price )
+			return false;
+
+		ply.Currency -= Price;
+
+		Log.Info( NumPresses );
 		OnPressed?.Invoke( this, ply );
-		Delete();
-		foreach ( var c in Children )
-			c.Delete();
+		Event.Run( EventToRun, ply );
+
+		if ( Used )
+		{
+			Delete();
+			foreach ( var c in Children )
+				c.Delete();
+		}
 
 		return true;
 	}
@@ -60,17 +78,16 @@ public partial class Button : AnimatedEntity, IUse
 		if ( user is not Player ply || Used )
 			return false;
 
-		// TODO: move this
-		if ( ply.Currency < Price )
-			return false;
-		ply.Currency -= Price;
-		Used = true;
-		Event.Run( EventToRun, ply );
+		LastPressed = 0;
+		NumPresses++;
+		if ( NumPresses >= NumStages )
+			Used = true;
+
 		return Press( ply );
 	}
 
 	public bool IsUsable( Entity user )
 	{
-		return !Used && user is Player;
+		return !Used && user is Player && LastPressed > 0.5f;
 	}
 }

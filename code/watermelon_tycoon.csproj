@@ -35,7 +35,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<Analyzer Include="S:\SteamLibrary\steamapps\common\sbox\bin\managed\Sandbox.Generator.dll"/>
+		<Analyzer Include="S:\SteamLibrary\steamapps\common\sbox\bin\managed\Sandbox.Generator.dll" />
 		<Reference Include="S:\SteamLibrary\steamapps\common\sbox\bin\managed/Sandbox.System.dll" />
 		<Reference Include="S:\SteamLibrary\steamapps\common\sbox\bin\managed/Sandbox.Engine.dll" />
 		<Reference Include="S:\SteamLibrary\steamapps\common\sbox\bin\managed/Sandbox.Game.dll" />
