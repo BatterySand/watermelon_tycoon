@@ -6,7 +6,26 @@
     "Guid": "59a5e5fd-fd35-4187-aa53-c5651a8cdc68",
     "Class": "melon_spawner",
     "Entities": [],
-    "Components": [],
+    "Components": [
+      {
+        "Guid": "3b16b839-fb01-4fb6-91de-ce56bbb4922c",
+        "Class": "SpawnOffsetComponent",
+        "Keys": {
+          "OffsetPosition": {
+            "Type": "Vector3",
+            "Value": "\u0022164,-468,18\u0022"
+          },
+          "OffsetRotation": {
+            "Type": "Rotation",
+            "Value": "\u00220,0,0,1\u0022"
+          },
+          "_name": {
+            "Value": "\u0022New Component\u0022"
+          },
+          "_tags": {}
+        }
+      }
+    ],
     "Keys": {
       "_name": {
         "Value": "\u0022Shotgun Spawner\u0022"

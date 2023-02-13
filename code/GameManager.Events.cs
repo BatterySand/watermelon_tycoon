@@ -1,4 +1,5 @@
 
+using Sandbox;
 using System.Linq;
 
 namespace MelTycoon;
@@ -68,8 +69,8 @@ public partial class MelGameManager
 		if ( Game.IsClient )
 			return;
 
-		ply.Plate.SpawnMachine<MelonSpawner>( "prefabs/melonspawners/blue_melon_spawner.prefab" );
-		ply.Plate.AddButton( "prefabs/buttons/buy_smg_packager_button.prefab" );
+		ply.Plate.SpawnMachine<MelonSpawner>( "prefabs/melonspawners/red_melon_spawner.prefab" );
+		ply.Plate.AddButton( "prefabs/buttons/buy_shotgun_spawner_button.prefab" );
 		Log.Info( $"{ply} bought a SHOTGUN Spawner" );
 	}
 }
