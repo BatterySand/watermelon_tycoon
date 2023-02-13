@@ -114,7 +114,7 @@
       },
       "Price": {
         "Type": "Int32",
-        "Value": "5"
+        "Value": "2"
       },
       "SpawnPosition": {
         "Type": "Vector3",

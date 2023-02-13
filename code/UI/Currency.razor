@@ -19,35 +19,37 @@
 			return;
 	}
 	<div class="inner">
-		<label text=@MelGameManager.LocalPlayer.Currency.ToString()/>
+		<label text=@MelGameManager.LocalPlayer.Currency.ToString() />
 	</div>
-	<style>
-		Currency {
-			position: absolute;
-			bottom: 1%;
-			left: 0%;
-			width: 100%;
+</root>
+
+<style>
+	Currency {
+		position: absolute;
+		bottom: 1%;
+		left: 0%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-self: center;
+
+		.inner {
 			display: flex;
+			width: auto;
+			min-width: 100px;
+			background-color: rgba(0, 0, 0, 0.5);
+			backdrop-filter: blur(12px);
+			border-radius: 3px;
+			align-content: center;
 			justify-content: center;
 			text-align: center;
 
-			.inner {
-				width: auto;
-				min-width: 100px;
-				padding-right: 7px;
-				background-color: rgba(0,0,0,0.5);
-				backdrop-filter: blur(12px);
-				border-radius: 3px;
-				display: flex;
-				align-content: center;
-
-				.label {
-					font-family: Poppins;
-					font-weight: bold;
-					color: white;
-					font-size: 64px;
-				}
+			.label {
+				font-family: Poppins;
+				font-weight: bold;
+				color: white;
+				font-size: 64px;
 			}
 		}
-	</style>
-</root>
+	}
+</style>

@@ -23,7 +23,7 @@
           },
           "OffsetPosition": {
             "Type": "Vector3",
-            "Value": "\u0022293,0,18\u0022"
+            "Value": "\u0022255,-150,18\u0022"
           },
           "OffsetRotation": {
             "Type": "Rotation",

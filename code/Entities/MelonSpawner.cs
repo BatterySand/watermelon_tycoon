@@ -22,6 +22,8 @@ public partial class MelonSpawner : Machine
 
 	private PlayerOwnerComponent _ownerComp;
 
+	public bool Upgraded { get; private set; }
+
 	public override void Spawn()
 	{
 		base.Spawn();

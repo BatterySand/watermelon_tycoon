@@ -1,0 +1,33 @@
+@using Sandbox;
+@using Sandbox.UI;
+
+@namespace MelTycoon
+@inherits Panel
+
+@code
+{
+    protected override int BuildHash()
+    {
+        return System.HashCode.Combine(MelGameManager.LocalPlayer.Currency);
+    }
+}
+
+<root>
+    @{
+        if (!MelGameManager.LocalPlayer.IsValid())
+            return;
+    }
+</root>
+
+<style>
+    Crosshair {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50% -50%);
+        width: 13px;
+        height: 13px;
+        border-radius: 100%;
+        border: 1px white;
+    }
+</style>

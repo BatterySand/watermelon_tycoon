@@ -11,7 +11,7 @@ public partial class Button : AnimatedEntity, IUse
 {
 	[Net]
 	[Prefab]
-	public int Price { get; set; }
+	public int Price { get; set; } = 0'
 
 	[Net]
 	[Prefab]
@@ -22,16 +22,16 @@ public partial class Button : AnimatedEntity, IUse
 	public string EventToRun { get; set; }
 
 	[Net]
-	public bool Used { get; set; }
+	public bool Used { get; set; } = false;
 
 	[Net]
-	public int NumPresses { get; set; }
-	public TimeSince LastPressed { get; private set; } = 0;
+	public int NumPresses { get; set; } = 0;
 
 	public Action<Button, Player> OnPressed;
 
 	public override void Spawn()
 	{
+		Transmit = TransmitType.Always;
 		SetupPhysicsFromAABB( PhysicsMotionType.Static, Vector3.One * -8, Vector3.One * 8 );
 		base.Spawn();
 	}
@@ -47,7 +47,6 @@ public partial class Button : AnimatedEntity, IUse
 
 		ply.Currency -= Price;
 
-		Log.Info( NumPresses );
 		OnPressed?.Invoke( this, ply );
 		Event.Run( EventToRun, ply );
 
@@ -78,7 +77,6 @@ public partial class Button : AnimatedEntity, IUse
 		if ( user is not Player ply || Used )
 			return false;
 
-		LastPressed = 0;
 		NumPresses++;
 		if ( NumPresses >= NumStages )
 			Used = true;
@@ -88,6 +86,6 @@ public partial class Button : AnimatedEntity, IUse
 
 	public bool IsUsable( Entity user )
 	{
-		return !Used && user is Player && LastPressed > 0.5f;
+		return !Used && user is Player;
 	}
 }

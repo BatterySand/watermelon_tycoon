@@ -27,7 +27,7 @@
           },
           "OffsetPosition": {
             "Type": "Vector3",
-            "Value": "\u00220,0,18\u0022"
+            "Value": "\u0022165,-150,18\u0022"
           },
           "OffsetRotation": {
             "Type": "Rotation",
@@ -70,7 +70,7 @@
       },
       "SpawnRate": {
         "Type": "Single",
-        "Value": "5"
+        "Value": "2"
       },
       "TierMelonToSpawn": {
         "Type": "MelonTier",

@@ -24,6 +24,7 @@ public partial class Plate : ModelEntity
 	{
 		base.Spawn();
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
+		Transmit = TransmitType.Always;
 	}
 
 	public void Setup()
@@ -37,20 +38,20 @@ public partial class Plate : ModelEntity
 		if ( !Game.IsServer )
 			return;
 
-		if ( !PrefabLibrary.TrySpawn<T>( prefabPath, out var machine ) )
+		if ( !PrefabLibrary.TrySpawn<T>( prefabPath, out var entity ) )
 			return;
 
-		var owner = machine.Components.GetOrCreate<PlayerOwnerComponent>();
+		var owner = entity.Components.GetOrCreate<PlayerOwnerComponent>();
 		owner.Client = PlateOwner;
 		owner.Player = PlateOwner.Pawn as Player;
 
-		machine.Position = Position;
+		entity.Position = Position;
 
-		if ( !machine.Components.TryGet<SpawnOffsetComponent>( out var spawnOffset ) )
+		if ( !entity.Components.TryGet<SpawnOffsetComponent>( out var spawnOffset ) )
 			return;
 
 		var tx = new Transform( spawnOffset.OffsetPosition, spawnOffset.OffsetRotation );
-		machine.SetParent( this, null, tx );
+		entity.SetParent( this, null, tx );
 	}
 
 	public Button AddButton( string path )
