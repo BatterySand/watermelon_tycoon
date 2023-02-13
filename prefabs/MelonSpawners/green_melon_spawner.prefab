@@ -99,6 +99,10 @@
       "MaxMelonGrowth": {
         "Type": "Single",
         "Value": "0"
+      },
+      "MelonPrefab": {
+        "Type": "Prefab",
+        "Value": "\u0022prefabs/melons/melon.prefab\u0022"
       }
     }
   }

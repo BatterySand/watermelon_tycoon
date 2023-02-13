@@ -1,0 +1,67 @@
+{
+  "SchemaVersion": 1,
+  "Name": null,
+  "Description": null,
+  "Root": {
+    "Guid": "a62f82b8-4ea3-4314-b926-3a96b60be8f3",
+    "Class": "melon_spawner",
+    "Entities": [],
+    "Components": [
+      {
+        "Guid": "e09eeac7-cc7d-405e-8b77-b1cf52394173",
+        "Class": "SpawnOffsetComponent",
+        "Keys": {
+          "OffsetPosition": {
+            "Type": "Vector3",
+            "Value": "\u0022165,-307,18\u0022"
+          },
+          "OffsetRotation": {
+            "Type": "Rotation",
+            "Value": "\u00220,0,0,1\u0022"
+          },
+          "_name": {
+            "Value": "\u0022New Component\u0022"
+          },
+          "_tags": {}
+        }
+      }
+    ],
+    "Keys": {
+      "SpawnRate": {
+        "Type": "Single",
+        "Value": "10"
+      },
+      "MelonDropOffset": {
+        "Type": "Vector3",
+        "Value": "\u00220,0,25\u0022"
+      },
+      "TierMelonToSpawn": {
+        "Type": "MelonTier",
+        "Value": "\u0022Blue\u0022"
+      },
+      "Model": {
+        "Type": "Model",
+        "Value": "\u0022models/props/ceiling_fixtures/ceiling_aircon_a.vmdl\u0022"
+      },
+      "_name": {
+        "Value": "\u0022SMG Spawner\u0022"
+      },
+      "_localposition": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_localrotation": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_scale": {
+        "Value": "1"
+      },
+      "_tags": {
+        "Value": "\u0022\u0022"
+      },
+      "MelonPrefab": {
+        "Type": "Prefab",
+        "Value": "\u0022prefabs/melons/blue_melon.prefab\u0022"
+      }
+    }
+  }
+}

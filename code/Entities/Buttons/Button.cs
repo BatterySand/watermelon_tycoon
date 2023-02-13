@@ -11,7 +11,7 @@ public partial class Button : AnimatedEntity, IUse
 {
 	[Net]
 	[Prefab]
-	public int Price { get; set; } = 0'
+	public int Price { get; set; } = 0;
 
 	[Net]
 	[Prefab]

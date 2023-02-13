@@ -10,7 +10,7 @@ public partial class MelonSpawner : Machine
 {
 	[Net]
 	[Prefab]
-	public MelonTier TierMelonToSpawn { get; set; } = MelonTier.Green;
+	public Prefab MelonPrefab { get; set; }
 
 	[Prefab]
 	public float SpawnRate { get; set; } = 5;
@@ -34,19 +34,10 @@ public partial class MelonSpawner : Machine
 	[Event.Tick.Server]
 	private void OnTickServer()
 	{
-		RenderColor = TierMelonToSpawn switch
-		{
-			MelonTier.Green => Color.Green,
-			MelonTier.Blue => Color.Blue,
-			MelonTier.Red => Color.Red,
-			_ => Color.White
-		};
-
 		_ownerComp ??= Components.Get<PlayerOwnerComponent>();
 
-		if ( SinceLastMelonSpawned > SpawnRate && PrefabLibrary.TrySpawn<Melon>( "prefabs/melons/melon.prefab", out var melon ) )
+		if ( SinceLastMelonSpawned > SpawnRate && PrefabLibrary.TrySpawn<Melon>( MelonPrefab.ResourcePath, out var melon ) )
 		{
-			melon.Tier = TierMelonToSpawn;
 			melon.Position = Position + MelonDropOffset;
 
 			var comp = melon.Components.GetOrCreate<PlayerOwnerComponent>();

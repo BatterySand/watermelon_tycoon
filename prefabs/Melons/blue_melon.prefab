@@ -1,0 +1,49 @@
+{
+  "SchemaVersion": 1,
+  "Name": null,
+  "Description": null,
+  "Root": {
+    "Guid": "6f0a9dfc-943f-4645-a232-1b2e58dc21eb",
+    "Class": "Melon",
+    "Entities": [],
+    "Components": [
+      {
+        "Guid": "d22cee49-5f7e-49e9-9a96-5be91fcb63ab",
+        "Class": "PlayerOwnerComponent",
+        "Keys": {
+          "_name": {
+            "Value": "\u0022New Component\u0022"
+          },
+          "_tags": {}
+        }
+      }
+    ],
+    "Keys": {
+      "AutoDeleteTime": {
+        "Type": "Single",
+        "Value": "20"
+      },
+      "Tier": {
+        "Type": "MelonTier",
+        "Value": "\u0022Blue\u0022"
+      },
+      "Model": {
+        "Type": "Model",
+        "Value": "\u0022weapons/rust_smg/rust_smg.vmdl\u0022"
+      },
+      "_name": {
+        "Value": "\u0022SMG\u0022"
+      },
+      "_localposition": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_localrotation": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_scale": {
+        "Value": "1"
+      },
+      "_tags": {}
+    }
+  }
+}

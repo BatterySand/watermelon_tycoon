@@ -3,22 +3,22 @@
   "Name": null,
   "Description": null,
   "Root": {
-    "Guid": "4bfc936a-0785-4dbf-ac13-b7214a6447ca",
+    "Guid": "36f669e0-2ccd-4c61-884d-dd5ddd71aac4",
     "Class": "mel_button",
     "Entities": [
       {
-        "Guid": "7149ebcb-894d-400a-977d-46f93a0324ba",
+        "Guid": "d8d550c5-05e7-441f-b176-9c64c1fa5db0",
         "Class": "LabelPanelEntity",
         "Entities": [],
         "Components": [],
         "Keys": {
           "Text": {
             "Type": "String",
-            "Value": "\u0022Buy Pallet\u0022"
+            "Value": "\u0022Buy SMG Spawner\u0022"
           },
           "Offset": {
             "Type": "Vector3",
-            "Value": "\u00220,0,14.898\u0022"
+            "Value": "\u00220,0,0\u0022"
           },
           "RotOffset": {
             "Type": "Rotation",
@@ -44,14 +44,14 @@
     ],
     "Components": [
       {
-        "Guid": "d878504a-fe29-411f-be17-50ed7d919791",
+        "Guid": "2038ab91-b2d6-499d-a280-59cca47a3175",
         "Class": "SpawnOffsetComponent",
         "Keys": {
-          "Position": {
+          "OffsetPosition": {
             "Type": "Vector3",
-            "Value": "\u0022-10,142,18\u0022"
+            "Value": "\u0022-17,429,18\u0022"
           },
-          "Rotation": {
+          "OffsetRotation": {
             "Type": "Rotation",
             "Value": "\u00220,0,0,1\u0022"
           },
@@ -60,14 +60,6 @@
           },
           "_tags": {
             "Value": "[]"
-          },
-          "OffsetPosition": {
-            "Type": "Vector3",
-            "Value": "\u0022450,0,18\u0022"
-          },
-          "OffsetRotation": {
-            "Type": "Rotation",
-            "Value": "\u00220,0,0,1\u0022"
           }
         }
       }
@@ -75,14 +67,18 @@
     "Keys": {
       "Price": {
         "Type": "Int32",
-        "Value": "1"
+        "Value": "0"
+      },
+      "NumStages": {
+        "Type": "Int32",
+        "Value": "0"
       },
       "EventToRun": {
         "Type": "String",
-        "Value": "\u0022buy.pallet\u0022"
+        "Value": "\u0022buy.blue_spawner\u0022"
       },
       "_name": {
-        "Value": "\u0022Root Entity\u0022"
+        "Value": "\u0022BuyBlueSpawnerButton\u0022"
       },
       "_localposition": {
         "Value": "\u00220,0,0\u0022"
@@ -95,10 +91,6 @@
       },
       "_tags": {
         "Value": "\u0022\u0022"
-      },
-      "NumStages": {
-        "Type": "Int32",
-        "Value": "0"
       }
     }
   }

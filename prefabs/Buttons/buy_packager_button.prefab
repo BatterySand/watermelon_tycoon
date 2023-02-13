@@ -70,22 +70,6 @@
             "Value": "\u00220,0,0,1\u0022"
           }
         }
-      },
-      {
-        "Guid": "90a97d0d-a8d4-4532-b3cb-d112ef0377d1",
-        "Class": "CostComponent",
-        "Keys": {
-          "Price": {
-            "Type": "Int32",
-            "Value": "5"
-          },
-          "_name": {
-            "Value": "\u0022New Component\u0022"
-          },
-          "_tags": {
-            "Value": "[]"
-          }
-        }
       }
     ],
     "Keys": {

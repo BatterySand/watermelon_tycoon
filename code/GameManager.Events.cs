@@ -13,6 +13,7 @@ public partial class MelGameManager
 
 		Log.Info( $"{ply} bought a packager" );
 		ply.Plate.SpawnMachine<MelonPackager>( "prefabs/machines/melonpackager/melon_packager.prefab" );
+		ply.Plate.AddButton( "prefabs/buttons/buy_blue_melon_spawner_button.prefab" );
 	}
 
 	[BuyEvents.BuyPalletEvent]
@@ -27,5 +28,15 @@ public partial class MelGameManager
 
 		plate.AddButton( "prefabs/buttons/buy_packager_button.prefab" );
 		Log.Info( $"{ply} bought a Pallet Upgrade" );
+	}
+
+	[Event( "buy.blue_spawner" )]
+	private void OnBuyBlueSpawner(Player ply)
+	{
+		if ( Game.IsClient )
+			return;
+
+		ply.Plate.SpawnMachine<MelonSpawner>( "prefabs/melonspawners/blue_melon_spawner.prefab" );
+		Log.Info( $"{ply} bought an SMG Spawner" );
 	}
 }
