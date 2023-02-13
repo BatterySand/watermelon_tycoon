@@ -1,0 +1,38 @@
+{
+  "SchemaVersion": 1,
+  "Name": null,
+  "Description": null,
+  "Root": {
+    "Guid": "8fc36e43-9b95-483d-abbe-8a50117fe63e",
+    "Class": "Melon",
+    "Entities": [],
+    "Components": [],
+    "Keys": {
+      "AutoDeleteTime": {
+        "Type": "Single",
+        "Value": "0"
+      },
+      "Tier": {
+        "Type": "MelonTier",
+        "Value": "\u0022Red\u0022"
+      },
+      "Model": {
+        "Type": "Model",
+        "Value": "\u0022weapons/rust_shotgun/rust_shotgun.vmdl\u0022"
+      },
+      "_name": {
+        "Value": "\u0022Root Entity\u0022"
+      },
+      "_localposition": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_localrotation": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_scale": {
+        "Value": "1"
+      },
+      "_tags": {}
+    }
+  }
+}

@@ -50,6 +50,10 @@ public partial class Button : AnimatedEntity, IUse
 		OnPressed?.Invoke( this, ply );
 		Event.Run( EventToRun, ply );
 
+		NumPresses++;
+		if ( NumPresses >= NumStages )
+			Used = true;
+
 		if ( Used )
 		{
 			Delete();
@@ -76,10 +80,6 @@ public partial class Button : AnimatedEntity, IUse
 	{
 		if ( user is not Player ply || Used )
 			return false;
-
-		NumPresses++;
-		if ( NumPresses >= NumStages )
-			Used = true;
 
 		return Press( ply );
 	}

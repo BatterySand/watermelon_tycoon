@@ -1,0 +1,91 @@
+{
+  "SchemaVersion": 1,
+  "Name": null,
+  "Description": null,
+  "Root": {
+    "Guid": "e8674faa-bffa-431c-87e1-31e5e66dead0",
+    "Class": "mel_button",
+    "Entities": [
+      {
+        "Guid": "67d73eb6-2ed8-41e8-a325-efdf58c71660",
+        "Class": "LabelPanelEntity",
+        "Entities": [],
+        "Components": [],
+        "Keys": {
+          "Text": {
+            "Type": "String",
+            "Value": "\u0022Buy Shotgun Spawner\u0022"
+          },
+          "Offset": {
+            "Type": "Vector3",
+            "Value": "\u00220,0,0\u0022"
+          },
+          "RotOffset": {
+            "Type": "Rotation",
+            "Value": "\u00220,0,0,1\u0022"
+          },
+          "_name": {
+            "Value": "\u0022Untitled Entity\u0022"
+          },
+          "_localposition": {
+            "Value": "\u00220,0,0\u0022"
+          },
+          "_localrotation": {
+            "Value": "\u00220,0,0\u0022"
+          },
+          "_scale": {
+            "Value": "1"
+          },
+          "_tags": {}
+        }
+      }
+    ],
+    "Components": [
+      {
+        "Guid": "6213c8fd-3cc9-443c-9671-32daaeb53fc2",
+        "Class": "SpawnOffsetComponent",
+        "Keys": {
+          "OffsetPosition": {
+            "Type": "Vector3",
+            "Value": "\u0022105,-468,18\u0022"
+          },
+          "OffsetRotation": {
+            "Type": "Rotation",
+            "Value": "\u00220,0,0,1\u0022"
+          },
+          "_name": {
+            "Value": "\u0022New Component\u0022"
+          },
+          "_tags": {}
+        }
+      }
+    ],
+    "Keys": {
+      "Price": {
+        "Type": "Int32",
+        "Value": "0"
+      },
+      "NumStages": {
+        "Type": "Int32",
+        "Value": "0"
+      },
+      "EventToRun": {
+        "Type": "String",
+        "Value": "\u0022\u0022"
+      },
+      "_name": {
+        "Value": "\u0022Root Entity\u0022"
+      },
+      "_localposition": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_localrotation": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_scale": {
+        "Value": "1"
+      },
+      "_tags": {}
+    }
+  }
+}

@@ -38,7 +38,7 @@ public partial class MelGameManager
 
 		Log.Info( $"{ply} bought a SMG packager" );
 		ply.Plate.SpawnMachine<MelonPackager>( "prefabs/machines/melonpackager/smg_packager.prefab" );
-		ply.Plate.AddButton( "prefabs/buttons/buy_red_melon_spawner_button.prefab" );
+		ply.Plate.AddButton( "prefabs/buttons/buy_shotgun_spawner_button.prefab" );
 	}
 
 	[Event( "buy.packager_shotgun" )]
@@ -52,7 +52,7 @@ public partial class MelGameManager
 	}
 
 	[Event( "buy.spawner_smg" )]
-	private void OnBuyBlueSpawner( Player ply )
+	private void OnBuySmgSpawner( Player ply )
 	{
 		if ( Game.IsClient )
 			return;
@@ -60,5 +60,16 @@ public partial class MelGameManager
 		ply.Plate.SpawnMachine<MelonSpawner>( "prefabs/melonspawners/blue_melon_spawner.prefab" );
 		ply.Plate.AddButton( "prefabs/buttons/buy_smg_packager_button.prefab" );
 		Log.Info( $"{ply} bought an SMG Spawner" );
+	}
+
+	[Event( "buy.spawner_shotgun" )]
+	private void OnBuyShotgunSpawner( Player ply )
+	{
+		if ( Game.IsClient )
+			return;
+
+		ply.Plate.SpawnMachine<MelonSpawner>( "prefabs/melonspawners/blue_melon_spawner.prefab" );
+		ply.Plate.AddButton( "prefabs/buttons/buy_smg_packager_button.prefab" );
+		Log.Info( $"{ply} bought a SHOTGUN Spawner" );
 	}
 }

@@ -1,0 +1,25 @@
+{
+  "SchemaVersion": 1,
+  "Name": null,
+  "Description": null,
+  "Root": {
+    "Guid": "896c1ff8-3b00-40b4-b5e2-f260ca930b9b",
+    "Entities": [],
+    "Components": [],
+    "Keys": {
+      "_name": {
+        "Value": "\u0022Shotgun Packager\u0022"
+      },
+      "_localposition": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_localrotation": {
+        "Value": "\u00220,0,0\u0022"
+      },
+      "_scale": {
+        "Value": "1"
+      },
+      "_tags": {}
+    }
+  }
+}
