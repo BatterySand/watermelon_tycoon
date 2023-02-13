@@ -3,22 +3,22 @@
   "Name": null,
   "Description": null,
   "Root": {
-    "Guid": "d164c444-f8c3-4dd7-8e48-a6dd72da1151",
+    "Guid": "77a1ae98-4bc9-477a-90b6-f9685a2bed3f",
     "Class": "mel_button",
     "Entities": [
       {
-        "Guid": "79b981d2-f291-4f79-8c94-20a5182dd9e4",
+        "Guid": "da7407ce-444f-43db-9062-74c9751100c7",
         "Class": "LabelPanelEntity",
         "Entities": [],
         "Components": [],
         "Keys": {
           "Text": {
             "Type": "String",
-            "Value": "\u0022Buy Pistol Packager\u0022"
+            "Value": "\u0022Buy SMG Packager\u0022"
           },
           "Offset": {
             "Type": "Vector3",
-            "Value": "\u00220,0,5\u0022"
+            "Value": "\u00220,0,0\u0022"
           },
           "RotOffset": {
             "Type": "Rotation",
@@ -36,45 +36,47 @@
           "_scale": {
             "Value": "1"
           },
-          "_tags": {
-            "Value": "\u0022\u0022"
-          }
+          "_tags": {}
         }
       }
     ],
     "Components": [
       {
-        "Guid": "1eea569e-4662-4e0e-879c-ac711154a3e0",
+        "Guid": "faa4d8ea-8de7-486d-9f81-b9f355ed6462",
         "Class": "SpawnOffsetComponent",
         "Keys": {
-          "Position": {
-            "Type": "Vector3",
-            "Value": "\u0022-16,256,18\u0022"
-          },
-          "_name": {
-            "Value": "\u0022SpawnOffsetComponent\u0022"
-          },
-          "_tags": {
-            "Value": "[]"
-          },
-          "Rotation": {
-            "Type": "Rotation",
-            "Value": "\u00220,0,0,1\u0022"
-          },
           "OffsetPosition": {
             "Type": "Vector3",
-            "Value": "\u0022144,-113,18\u0022"
+            "Value": "\u0022148,-259,18\u0022"
           },
           "OffsetRotation": {
             "Type": "Rotation",
             "Value": "\u00220,0,0,1\u0022"
+          },
+          "_name": {
+            "Value": "\u0022New Component\u0022"
+          },
+          "_tags": {
+            "Value": "[]"
           }
         }
       }
     ],
     "Keys": {
+      "Price": {
+        "Type": "Int32",
+        "Value": "5"
+      },
+      "NumStages": {
+        "Type": "Int32",
+        "Value": "0"
+      },
+      "EventToRun": {
+        "Type": "String",
+        "Value": "\u0022buy.packager_smg\u0022"
+      },
       "_name": {
-        "Value": "\u0022BuyGreenPackagerButton\u0022"
+        "Value": "\u0022BuyPackagerSMG\u0022"
       },
       "_localposition": {
         "Value": "\u00220,0,0\u0022"
@@ -87,26 +89,6 @@
       },
       "_tags": {
         "Value": "\u0022\u0022"
-      },
-      "TextLabel": {
-        "Type": "String",
-        "Value": "\u0022Buy Packager\u0022"
-      },
-      "EventToRun": {
-        "Type": "String",
-        "Value": "\u0022buy.packager_pistol\u0022"
-      },
-      "Price": {
-        "Type": "Int32",
-        "Value": "2"
-      },
-      "SpawnPosition": {
-        "Type": "Vector3",
-        "Value": "\u00220,280,18\u0022"
-      },
-      "NumStages": {
-        "Type": "Int32",
-        "Value": "0"
       }
     }
   }
